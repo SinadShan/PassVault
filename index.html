@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PwManager</title>
+
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="row justify-content-center d-flex flex-column min-vh-100 align-items-center">
+            <div class="col-sm-9 col-lg-6 contact-form justify-content-center">
+                <!-- <div class="contact-image">
+                    <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+                </div> -->
+                <h2 id='heading'>Login</h2>
+                <div class="row justify-content-center text-center">
+                    <!-- <div class=""> -->
+
+                        <form method="post">
+                            <div class="form-group form-floating">
+                                <input type="text" required name="username" class="form-control username" placeholder="Username" />
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="form-group form-floating">
+                                <input type="password" required name="password" class="form-control password" placeholder="Enter the password" />
+                                <label for="password">Password</label>
+                            </div>
+
+                            <span>
+                                <div class="form-group form-floating" hidden='true' id="signup-password">
+                                    <input type="password" name="password-again" class="form-control" placeholder="Enter the password again" />
+                                    <label for="password">Password</label>
+                                </div>
+                            </span>
+
+                            <span>
+                                <div class="form-group ">
+                                    <input type="submit" name="btnSubmit" class="btnContact" value="Submit" />
+                                    </br>
+                                    <span class="text-muted">Don't have an account?  </span><a id="signup-link">Signup</a>
+                                </div>
+                            </span>
+
+                        </form>
+                    <!-- </div> -->
+                        
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="./index.js"></script>
+</html>

@@ -1,0 +1,57 @@
+body,html{
+    background: -webkit-radial-gradient(left, #404eed, #6975fa);
+    /* background-color: #5865f2; */
+    height: 100%;
+}
+.contact-form{
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.233);
+    background: #36393f;
+    border-radius: 30px;
+}
+.contact-form .form-control{
+    border-radius:1rem;
+    margin-bottom:10px;
+}
+.contact-image{
+    text-align: center;
+}
+.contact-image img{
+    border-radius: 300px;
+    max-width: 75px;
+    min-width: 50px;
+    margin-top: -3%;
+    transform: rotate(29deg);
+}
+.contact-form form{
+    padding: 5% 5% 10px;
+    /* margin-bottom:30px ; */
+}
+
+.contact-form h2{
+    font-weight: 900;
+    font-size: calc(2rem + 0.9vw);
+    margin-bottom: 2%;
+    margin-top: 10%;
+    text-align: center;
+    color: #5865f2;
+}
+.contact-form .btnContact {
+    min-width: 25%;
+    max-width: 30%;
+    margin-top: 20px;
+    border: none;
+    border-radius: 1rem;
+    padding: 1.5%;
+    background: #5865f2;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+#signup-link{
+    color: #5865f2;
+    display: inline-block;
+    margin-top: 40px;
+    cursor: pointer;
+}

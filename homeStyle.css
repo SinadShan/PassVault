@@ -1,0 +1,66 @@
+html{
+    height: 100vh;
+}
+body{
+    margin: 2%;
+    background-color: #36393f;
+}
+
+h1,h3{
+    color:white;
+}
+.card{
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.315) 5px 5px 15px;
+    text-align: center;
+    height:250px;
+}
+
+.card:hover{
+    transform: scale(1.02);
+}
+
+.card .card-body{
+    font-size: 2rem;
+    background-color: #36393f;
+    color: white;
+}
+
+input[type=text],
+input[type=password],
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=text]:disabled,
+input[type=password]:disabled{
+    border-radius: 0;
+    color: white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+}
+
+.eye{
+    font-size: 1.4rem;
+    float: right;
+    position: relative;
+    top: -35px;
+    left: -30px;
+}
+.eye:hover,
+.clipboard:hover{
+    transform: scale(1.1);
+}
+
+.clipboard{
+    font-size: 1.25rem;
+    float: right;
+    position: relative;
+    top: -35px;
+    left: 20px;
+}
+
+
+

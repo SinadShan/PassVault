@@ -1,0 +1,24 @@
+{
+  "name": "pwmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "better-sqlite3": "^7.4.1",
+    "bootstrap": "^5.0.2",
+    "bootstrap-icons": "^1.5.0",
+    "ejs-electron": "^2.1.1",
+    "electron": "^13.1.6"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^2.3.5"
+  }
+}
