@@ -1,0 +1,12 @@
+body{
+    height: 100vh;
+}
+
+.container-fluid{
+    height: 100vh;
+    background-color: #6975fa;
+}
+
+.bi-safe{
+    font-size: 100px;
+}

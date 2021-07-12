@@ -26,23 +26,52 @@ let currentUser
 let globalPassword
 
 function createWindow(){
+    splash = new BrowserWindow({
+        minHeight:600,
+        minWidth: 800,
+        transparent: true,
+        backgroundColor: 'antiquewhite', // temporary
+        show: false,
+        frame: false,
+        alwaysOnTop: true
+    })
+
+    splash.loadURL(`file://${__dirname}/splash.html`);
+    splash.once('ready-to-show',() => {
+        splash.show()
+    })
+
+    
     win = new BrowserWindow({
         minHeight:600,
         minWidth: 800,
+        transparent: true,
+        backgroundColor: '#404eed',
         webPreferences:{
             contextIsolation: true,
             nodeIntegration: false,
             preload: path.join(__dirname,"preload.js")
         },
+        show:false,
         autoHideMenuBar: true,
         titleBarStyle:'hidden'
     })
     win.loadFile(__dirname+'/index.html')
+    win.once('ready-to-show',() =>{
+        setTimeout(()=>{
+            splash.destroy()
+            win.show()   
+        },2000)
+    })
 
     win.on('closed', ()=>{
         win = null
     })
+
 }
+
+
+app.on('ready', createWindow)
 
 function retrievePasswords(){
     // deciphering password
@@ -65,7 +94,6 @@ function retrievePasswords(){
     win.loadURL('file://'+__dirname+'/home.ejs')
 }
 
-
 ipcMain.on('login', (event, username, password) => {
     // console.log(`Name passed from the renderer: ${username},${password}`)
     const loginDetails = db.prepare('select username,password from users where username=?').get(username)
@@ -77,15 +105,6 @@ ipcMain.on('login', (event, username, password) => {
             globalPassword = password
 
             retrievePasswords()          
-            // let options = {root: __dirname}
-            // ejse.renderFile('home.ejs',details,options,function (err,str){
-            //     if(err){
-            //         console.log(err)
-            //     }
-            //     else{
-            //         win.loadURL('data:text/html;charset=utf-8,' + encodeURI(str)) 
-            //     }
-            // })
         }
         else{
             console.log("Login Failed")
@@ -157,5 +176,3 @@ ipcMain.on('addPassword', function (event,website,password){
     }
 
 })
-
-app.on('ready', createWindow)
