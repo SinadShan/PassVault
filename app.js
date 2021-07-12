@@ -61,6 +61,7 @@ function retrievePasswords(){
 
     // ejs rendering and loading home
     ejse.data('details',details)
+    ejse.data('username',currentUser)
     win.loadURL('file://'+__dirname+'/home.ejs')
 }
 

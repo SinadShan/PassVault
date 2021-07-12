@@ -14,8 +14,14 @@
 <body>
 
     <div class="container">
-        <h3></h3>
-        <h1>Your Passwords</h1>
+        <div class="header">
+            <h1 style="display: inline-block;">Your Passwords</h1>
+            <div style="float:right;" class="user-card">
+                <h3 id="username"><%=username%></h3>
+                <a id="logout" href="index.html">Logout</a>
+                <br>
+            </div>
+        </div>
         <hr style="color: white; height: 2px;">
         <div class="row">
             <% details.forEach (item => {

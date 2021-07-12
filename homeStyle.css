@@ -25,6 +25,14 @@ h1,h3{
     background-color: #36393f;
     color: white;
 }
+#username{
+    margin: 0;
+}
+
+#logout{
+    float: right;
+    text-decoration: none;
+}
 
 input[type=text],
 input[type=password],
