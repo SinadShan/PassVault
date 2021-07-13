@@ -11,7 +11,7 @@ const crypto = require('crypto')
 const ejse = require('ejs-electron')
  
 
-const db = new Database('pwmanager.db',{verbose: console.log })
+const db = new Database('pwmanager.db',{verbose: ()=>{} })
 const saltRounds = 10;
 
 const createUsersTableQuery = db.prepare('create table if not exists users (id integer primary key not null, username text unique not null, password text not null)')
@@ -85,7 +85,7 @@ function retrievePasswords(){
         decryptedPassword += decipher.final('utf-8')
         item.password = decryptedPassword
         // decryptedPasswords.append(decryptedPassword)
-        console.log(decryptedPassword)
+        // console.log(decryptedPassword)
     });
 
     // ejs rendering and loading home
@@ -161,16 +161,13 @@ ipcMain.on('addPassword', function (event,website,password){
     cipher = crypto.createCipheriv('aes-256-cbc',key,iv)
     encryptedPassword = cipher.update(password,'utf-8','hex')
     encryptedPassword += cipher.final('hex')
-    console.log(encryptedPassword)
 
     // add password to db
     try{
-        console.log('Inserting into secrets')
         db.prepare(`insert into secrets (user,website,password,iv) values ((select id from users where username = ?),?,?,?);`).run(currentUser,website,encryptedPassword,iv)
 
         retrievePasswords()
-    }catch(err)
-    {
+    }catch(err){
         // couldn't add new password
         console.log(err)
     }
