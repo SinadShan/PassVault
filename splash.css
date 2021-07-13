@@ -1,4 +1,5 @@
 body{
+    color: white;
     height: 100vh;
 }
 
@@ -9,4 +10,22 @@ body{
 
 .bi-safe{
     font-size: 100px;
+}
+
+h1{
+    animation: slide ease .7s;
+    font-size: 2rem;
+    font-weight: bold;
+    /* padding: 20px; */
+}
+
+@keyframes slide {
+    0% {
+        transform: translate(0, -20px);
+        opacity:.5;
+    }
+    100% {
+        transform: translate(0, 0);
+        opacity:1;
+    }
 }

@@ -27,8 +27,8 @@ let globalPassword
 
 function createWindow(){
     splash = new BrowserWindow({
-        minHeight:600,
-        minWidth: 800,
+        height:300,
+        width: 400,
         transparent: true,
         backgroundColor: 'antiquewhite', // temporary
         show: false,
@@ -61,7 +61,7 @@ function createWindow(){
         setTimeout(()=>{
             splash.destroy()
             win.show()   
-        },2000)
+        },3000)
     })
 
     win.on('closed', ()=>{
