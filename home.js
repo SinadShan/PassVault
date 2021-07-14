@@ -33,6 +33,8 @@ for (item of document.getElementsByClassName('clipboard')){
 document.getElementById('new-password').onclick = function(){
     document.getElementById('new-password-form').removeAttribute('hidden')
     document.getElementById('cancel').removeAttribute('hidden')
+    document.getElementsByClassName('new-password-req')[0].setAttribute('required','')
+    document.getElementsByClassName('new-password-req')[1].setAttribute('required','')
     this.hidden = 'true'
 }
 
@@ -40,6 +42,8 @@ document.getElementById('new-password').onclick = function(){
 document.getElementById('cancel').onclick = function (){
     document.getElementById('new-password-form').hidden = 'true'
     document.getElementById('new-password').removeAttribute('hidden')
+    document.getElementsByClassName('new-password-req')[0].removeAttribute('required')
+    document.getElementsByClassName('new-password-req')[1].removeAttribute('required')
     this.hidden = 'true'
 }
 

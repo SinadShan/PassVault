@@ -21,6 +21,7 @@ h1,h3{
 }
 
 .card .card-body{
+    padding-top: 5px;
     font-size: 2rem;
     background-color: #36393f;
     color: white;
@@ -48,6 +49,10 @@ input[type=password]:disabled{
     outline: none;
     background: none;
     box-shadow: none;
+}
+
+.bi-x{
+    font-size: 1.65rem;
 }
 
 .eye{

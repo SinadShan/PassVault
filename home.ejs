@@ -29,7 +29,12 @@
             <!-- webiste Passwords -->
             <div class="col-6 col-lg-4">
                 <div class="card">
-                    <div class="card-body d-flex align-items-center">
+                    <div class="card-body d-flex flex-column ">
+                        <div class="row justify-content-end">
+                            <div class="col-2">
+                                <i id='delete-<%= item.website %>' class="bi bi-x"></i>
+                            </div>
+                        </div>
                         <div class="row">
                             <h5 class="card-title"><%= item.website %></h5>
                             <p class="card-text">Password</p>
@@ -55,8 +60,8 @@
                             <h5 class="card-title">Add a password</h5>
                             <form hidden id="new-password-form">
                                 <div class="form-group">
-                                    <input type="text" name="website" class="form-control" placeholder="Website"/>
-                                    <input type="password" name="password" class="form-control" placeholder="Password"/>
+                                    <input type="text" name="website" class="form-control new-password-req" placeholder="Website"/>
+                                    <input type="password" name="password" class="form-control new-password-req" placeholder="Password"/>
                                     <div class="row">
                                         <div class="col-6">
                                             <input type="button" id="cancel" class="form-control btn btn-primary" value="Cancel"/>
