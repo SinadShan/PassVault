@@ -3,6 +3,7 @@ const {
     BrowserWindow,
     ipcMain,
     clipboard,
+    dialog
     } = require('electron')
 const Database = require('better-sqlite3')
 const bcrypt = require('bcrypt');
@@ -75,7 +76,6 @@ app.on('ready', createWindow)
 
 function retrievePasswords(){
     // deciphering password
-    // let decryptedPasswords = []
     // include error handling!
     details = db.prepare('select s.website,s.password,s.iv from secrets s where s.user = (select id from users where username = ?);').all(currentUser) 
     key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
@@ -84,8 +84,6 @@ function retrievePasswords(){
         decryptedPassword = decipher.update(item.password,'hex','utf-8')
         decryptedPassword += decipher.final('utf-8')
         item.password = decryptedPassword
-        // decryptedPasswords.append(decryptedPassword)
-        // console.log(decryptedPassword)
     });
 
     // ejs rendering and loading home
@@ -95,7 +93,6 @@ function retrievePasswords(){
 }
 
 ipcMain.on('login', (event, username, password) => {
-    // console.log(`Name passed from the renderer: ${username},${password}`)
     const loginDetails = db.prepare('select username,password from users where username=?').get(username)
 
     async function login(loginPassword,dbPassword){
@@ -128,16 +125,6 @@ ipcMain.on('signup', (event,username,password) => {
 
             // ejs rendering and loading home
             retrievePasswords()
-            // let details = {}
-            // let options = {root: __dirname}
-            // ejs.renderFile('home.ejs',details,options,function (err,str){
-            //     if(err){
-            //         console.log(err)
-            //     }
-            //     else{
-            //         win.load('data:text/html;charset=utf-8,' + encodeURI(str)) 
-            //     }
-            // })
         }catch(error){
             event.reply('error-signup',error)
         }
@@ -153,7 +140,7 @@ ipcMain.on('copy', (event,password)=>{
 ipcMain.on('addPassword', function (event,website,password){
     // encrypt password
 
-    // initialisation vector
+    // initialising vector
     let iv = crypto.randomBytes(16)
 
     // key for cipher
@@ -172,4 +159,19 @@ ipcMain.on('addPassword', function (event,website,password){
         console.log(err)
     }
 
+})
+
+ipcMain.on('deletePassword', (event,website)=> {
+    let options= {
+        type: "warning",
+        title: "Warning",
+        message: "Deleting password. Do you want to continue?",
+        buttons: ['Yes','Cancel']
+    }
+    dialog.showMessageBox(options).then(result => {
+        if(result.response == 0){
+            const s = db.prepare('delete from secrets where user = (select id from users where username=?) and website=?').run(currentUser,website)
+            retrievePasswords()
+        }
+    })
 })

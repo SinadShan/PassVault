@@ -15,6 +15,10 @@ contextBridge.exposeInMainWorld(
         },
         addPassword: (website,password) => {
             ipcRenderer.send('addPassword',website,password)
+        },
+        deletePassword: (website) => {
+            console.log('here')
+            ipcRenderer.send('deletePassword', website)
         }
     }
 )

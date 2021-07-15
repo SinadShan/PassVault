@@ -54,3 +54,11 @@ document.getElementById('new-password-form').addEventListener('submit', function
     const form = event.target
     window.passVaultAPI.addPassword(form.website.value,form.password.value)
 })
+
+// delete a password
+for(item of document.getElementsByClassName('bi-x')){
+    item.addEventListener('click',function (){
+        console.log(this.id+' was clicked')
+        window.passVaultAPI.deletePassword(this.id)
+    })
+}
