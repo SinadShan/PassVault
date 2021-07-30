@@ -22,9 +22,10 @@ for ( item of document.getElementsByClassName('eye')){
 
 // copy password to clipboard
 for (item of document.getElementsByClassName('clipboard')){
-    item.onclick = function(){
+    item.onclick = function(event){
+        console.log(event.target.parentElement.children[0].value)
         window.passVaultAPI.copyToClipboard(
-        document.getElementById(this.parentElement.children[0].id).value
+            event.target.parentElement.children[0].value
         )
     }
 }
