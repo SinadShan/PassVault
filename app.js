@@ -78,7 +78,7 @@ function retrievePasswords(){
     // deciphering password
     // include error handling!
     details = db.prepare('select s.website,s.password,s.iv from secrets s where s.user = (select id from users where username = ?);').all(currentUser) 
-    key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
+    let key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
     details.forEach(item => {
         decipher = crypto.createDecipheriv('aes-256-cbc',key,item.iv)
         decryptedPassword = decipher.update(item.password,'hex','utf-8')
@@ -123,9 +123,11 @@ ipcMain.on('signup', (event,username,password) => {
         try{
             db.prepare('insert into users (username,password) values (?,?);').run(username,hash)
 
-            // ejs rendering and loading home
+            currentUser = username
+            globalPassword = password
             retrievePasswords()
         }catch(error){
+            console.log(error)
             event.reply('error-signup',error)
         }
     })
