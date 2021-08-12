@@ -27,7 +27,16 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
         window.passVaultAPI.login(form.username.value,form.password.value)
     }
     else{
-        window.passVaultAPI.signup(form.username.value,form.password.value)
+        const password = form.querySelectorAll(".password")[0]
+        const confirm_password = form.querySelectorAll(".password")[1]
+        console.log(password.value)
+        console.log(confirm_password.value)
+        if(password.value != confirm_password.value){
+            alert("Passwords don't match")
+        }
+        else{
+            window.passVaultAPI.signup(form.username.value,form.password.value)
+        }
     }
 
 })
