@@ -67,6 +67,7 @@ function createWindow(){
 
     win.on('closed', ()=>{
         win = null
+        db.close()
     })
 
 }
@@ -77,7 +78,7 @@ app.on('ready', createWindow)
 function retrievePasswords(){
     // deciphering password
     // include error handling!
-    details = db.prepare('select s.website,s.password,s.iv from secrets s where s.user = (select id from users where username = ?);').all(currentUser) 
+    const details = db.prepare('select s.website,s.password,s.iv from secrets s where s.user = (select id from users where username = ?);').all(currentUser) 
     let key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
     details.forEach(item => {
         decipher = crypto.createDecipheriv('aes-256-cbc',key,item.iv)

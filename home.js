@@ -2,8 +2,8 @@
 
 // k = JSON.parse(details)
 
-console.log(typeof Details)
-console.log(Details)
+// console.log(typeof Details)
+// console.log(Details)
 
 // display password
 for ( item of document.getElementsByClassName('eye')){
@@ -62,4 +62,23 @@ for(item of document.getElementsByClassName('bi-x')){
         console.log(this.id+' was clicked')
         window.passVaultAPI.deletePassword(this.id)
     })
+}
+
+// search for password
+const searchForm = document.getElementById('search')
+searchForm.addEventListener('keyup',search)
+
+function search(e){
+    
+    const cards = document.querySelectorAll('.card')
+    
+    for(i = 0; i < cards.length-1; i++){
+        if(cards[i].children[0].children[1].children[1].textContent.search(new RegExp(e.target.value,'i'))<0){
+            cards[i].parentElement.style.display = "none"
+        }
+        else{
+            cards[i].parentElement.style.display = ""
+        }
+    }
+    
 }
