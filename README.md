@@ -3,16 +3,14 @@
 
 Electron based cross-platform desktop application for managing passwords
 
-Store and manage your passwords on your local machine. This desktop application solves the problem of forgotten passwords and/or helps with your heedless behaviour of same-password-for-all-sites.  
+Store and manage your passwords on your local machine. This desktop application solves the problem of forgotten passwords and helps with your heedless behaviour of same-password-for-all-sites.  
 
-With the help of this application you can confidently set unique and complex passwords and hand over the burden of remembering them to PassVault, you just have to remember a global-password.  
-
-Basic UI and functionalities setup, more updates to follow.
+With the help of this application you can confidently set unique and complex passwords and hand over the burden of remembering them to PassVault, you just have to remember a global-password. The passwords are encrypted and stored in your machine, making it super safe.
 
 ## Features
-* Create multiple accounts  
+* Supports multiple users  
 * Copy passwords to clipboard  
-
+* Search through passwords
 
 
 ##  Contribute
