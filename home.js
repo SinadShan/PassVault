@@ -1,10 +1,4 @@
 
-
-// k = JSON.parse(details)
-
-// console.log(typeof Details)
-// console.log(Details)
-
 // display password
 for ( item of document.getElementsByClassName('eye')){
     item.onclick = function (){
@@ -60,7 +54,7 @@ document.getElementById('new-password-form').addEventListener('submit', function
 for(item of document.getElementsByClassName('bi-x')){
     item.addEventListener('click',function (){
         console.log(this.id+' was clicked')
-        window.passVaultAPI.deletePassword(this.id)
+        window.passVaultAPI.deletePassword(this.id.slice(0,-2))
     })
 }
 

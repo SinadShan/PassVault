@@ -121,7 +121,7 @@ ipcMain.on('login', (event, username, password) => {
 
 ipcMain.on('signup', (event,username,password) => {
     bcrypt.hash(password, saltRounds, function(err, hash) { // err on hashing password
-        try{
+        try{        
             db.prepare('insert into users (username,password) values (?,?);').run(username,hash)
 
             currentUser = username
@@ -134,7 +134,7 @@ ipcMain.on('signup', (event,username,password) => {
     })
 })
 
-ipcMain.on('copy', (event,password)=>{
+ipcMain.on('copy', (event,password)=>{  
     clipboard.writeText(password) 
     event.reply('copied')
 })
