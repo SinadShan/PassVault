@@ -75,6 +75,10 @@ input[type=password]:disabled{
     font-size: 1.65rem;
 }
 
+.bi-x:hover{
+    color: #404eed;
+}
+
 .eye{
     font-size: 1.4rem;
     float: right;
