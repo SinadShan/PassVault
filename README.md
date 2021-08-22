@@ -1,6 +1,6 @@
 # PassVault
 ![Electron](https://img.shields.io/badge/-Electron-05122A?style=flat&logo=electron)  
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/passvault)&nbsp;
+[![passvault](https://snapcraft.io/passvault/badge.svg)](https://snapcraft.io/passvault)&nbsp;
 
 Electron based cross-platform desktop application for managing passwords
 
