@@ -24,7 +24,7 @@ or assisting in other parts of development, here's how to get started:
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your
    own GitHub account
 2. [Clone](https://help.github.com/articles/cloning-a-repository/) it to your
-   local device: `git clone git@github.com: https://github.com/SinadShan/PassVault.git`
+   local device: `git clone git@github.com:https://github.com/SinadShan/PassVault.git`
 3. cd into the repo
 4. Install the dependencies: `npm install`
 5. Run the app by starting electron, building the code and watch for changes:
