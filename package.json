@@ -4,62 +4,40 @@
   "description": "A simple app to manage your passwords.",
   "main": "./src/app.js",
   "scripts": {
-    "start": "electron-forge start",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "dist": "electron-builder --linux snap"
+    "start": "electron . start",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "password",
+    "desktop app"
+  ],
+  "author": {
+    "name": "Sinadin Shan",
+    "email": "sinadinshan66@gmail.com"
+  },
+  "maintainer": "Sinadin Shan",
+  "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "better-sqlite3": "^7.4.1",
     "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.5.0",
-    "ejs-electron": "^2.1.1",
-    "electron-squirrel-startup": "^1.0.0"
+    "ejs-electron": "^2.1.1"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.59",
-    "@electron-forge/maker-deb": "^6.0.0-beta.59",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.59",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.59",
-    "@electron-forge/maker-zip": "^6.0.0-beta.59",
     "electron": "^13.1.6",
-    "electron-builder": "^22.11.7",
-    "electron-rebuild": "^2.3.5"
+    "electron-builder": "^22.11.7"
   },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "PassVault"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {
-            "icon": "./assets/icon.png"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {
-            "icon": "./assets/icon.png"
-          }
-        }
-      ]
+  "build": {
+    "appId": "com.app.passvault",
+    "linux": {
+      "target": [
+        "snap",
+        "deb",
+        "rpm"
+      ],
+      "icon": "build-res/icons"
     }
   }
 }
