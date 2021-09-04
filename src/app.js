@@ -11,8 +11,8 @@ const path = require('path')
 const crypto = require('crypto')
 const ejse = require('ejs-electron')
  
-
-const db = new Database('pwmanager.db')
+const user = process.env.USER
+const db = new Database(`/home/${user}/pwmanager.db`)
 const saltRounds = 10;
 
 const createUsersTableQuery = db.prepare('create table if not exists users (id integer primary key not null, username text unique not null, password text not null)')
