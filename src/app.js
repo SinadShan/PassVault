@@ -10,8 +10,14 @@ const bcrypt = require('bcrypt');
 const path = require('path')        
 const crypto = require('crypto')
 const ejse = require('ejs-electron')
- 
-const db = new Database(path.resolve(__dirname,'pwmanager.db'))
+
+if(process.platform == 'win32'){
+    var db = new Database('pwmanager.db')
+}
+else{
+    const user = process.env.USER
+    var db = new Database(`/home/${user}/pwmanager.db`)
+}
 const saltRounds = 10;
 
 const createUsersTableQuery = db.prepare('create table if not exists users (id integer primary key not null, username text unique not null, password text not null)')
