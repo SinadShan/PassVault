@@ -55,3 +55,26 @@ body,html{
     margin-top: 40px;
     cursor: pointer;
 }
+
+.info{
+    margin-top: -60px;
+    opacity: 0.55;
+    font-size: .85rem;
+    color: aliceblue;
+    /* padding: 0 150px; */
+    /* padding-bottom: 30px; */
+    text-align: center;
+}
+
+.info:hover{
+    opacity: 0.8;
+}
+
+p a{
+    text-decoration: none;
+    color: rgb(165, 211, 252);
+}
+
+p a:hover{
+    color: rgb(0, 0, 0);
+}
