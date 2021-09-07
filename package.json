@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron . start",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "dist-win": "electron-builder --win"
   },
   "keywords": [
     "password",
@@ -38,6 +39,10 @@
         "deb",
         "rpm"
       ],
+      "icon": "build-res/icons"
+    },
+    "win": {
+      "target": ["nsis"],
       "icon": "build-res/icons"
     }
   }
