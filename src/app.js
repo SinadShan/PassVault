@@ -11,8 +11,7 @@ const path = require('path')
 const crypto = require('crypto')
 const ejse = require('ejs-electron')
  
-const user = process.env.USER
-const db = new Database(`/home/${user}/pwmanager.db`)
+const db = new Database(path.resolve(__dirname,'pwmanager.db'))
 const saltRounds = 10;
 
 const createUsersTableQuery = db.prepare('create table if not exists users (id integer primary key not null, username text unique not null, password text not null)')
@@ -96,6 +95,13 @@ function retrievePasswords(){
 ipcMain.on('login', (event, username, password) => {
     const loginDetails = db.prepare('select username,password from users where username=?').get(username)
 
+    let options = {
+        type: "error",
+        title: "Login failed",
+        message: "Invalid login credentials",
+        buttons: ['ok']
+    }
+
     async function login(loginPassword,dbPassword){
         if(await bcrypt.compare(loginPassword,dbPassword)){
             console.log('login success')
@@ -105,6 +111,7 @@ ipcMain.on('login', (event, username, password) => {
             retrievePasswords()          
         }
         else{
+            dialog.showMessageBox(win,options).then()
             console.log("Login Failed")
             event.reply('login-fail')
         }          
@@ -113,6 +120,7 @@ ipcMain.on('login', (event, username, password) => {
     if(typeof loginDetails != 'undefined'){
             login(password,loginDetails.password)
     }else{
+        dialog.showMessageBox(win,options).then()
         console.log("Login failed")
         event.reply('login-fail')
     }
@@ -129,6 +137,13 @@ ipcMain.on('signup', (event,username,password) => {
             retrievePasswords()
         }catch(error){
             console.log(error)
+            let options = {
+                type: "error",
+                title: "Sgnup Failed",
+                message: "Username already taken",
+                buttons: ['ok']
+            }
+            dialog.showMessageBox(win,options).then()
             event.reply('error-signup',error)
         }
     })
@@ -136,6 +151,13 @@ ipcMain.on('signup', (event,username,password) => {
 
 ipcMain.on('copy', (event,password)=>{  
     clipboard.writeText(password) 
+    let options = {
+        type: "info",
+        title: "Success",
+        message: "Password copied to clipboard",
+        buttons: ['ok']
+    }
+    dialog.showMessageBox(win,options).then()
     event.reply('copied')
 })
 
@@ -171,10 +193,20 @@ ipcMain.on('deletePassword', (event,website)=> {
         message: "Deleting password. Do you want to continue?",
         buttons: ['Yes','Cancel']
     }
-    dialog.showMessageBox(options).then(result => {
+    dialog.showMessageBox(win,options).then(result => {
         if(result.response == 0){
             const s = db.prepare('delete from secrets where user = (select id from users where username=?) and website=?').run(currentUser,website)
             retrievePasswords()
         }
     })
+})
+
+ipcMain.on('unmatchingPasswords',(event)=>{
+    let options= {
+        type: "error",
+        title: "Error",
+        message: "Passwords do not match",
+        buttons: ['ok']
+    }
+    dialog.showMessageBox(win,options).then()
 })
