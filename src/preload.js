@@ -18,20 +18,21 @@ contextBridge.exposeInMainWorld(
         },
         deletePassword: (website) => {
             ipcRenderer.send('deletePassword', website)
+        },
+        unmatchingPasswords: () => {
+            ipcRenderer.send('unmatchingPasswords')
         }
     }
 )
 
 ipcRenderer.on('copied', (event)=>{
-    alert("Password Copied")
+    console.log(event)
 })
 
 ipcRenderer.on('login-fail',(event) => {
     console.log(event)
-    alert("Wrong login credentials")
 })
 
 ipcRenderer.on('error-signup',(event,err) => {
     console.log(err)
-    alert('Username already taken')
 })
