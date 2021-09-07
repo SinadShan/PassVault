@@ -49,8 +49,8 @@ function createWindow(){
 
     
     win = new BrowserWindow({
-        minHeight:600,
-        minWidth: 800,
+        minHeight:700,
+        minWidth: 900,
         backgroundColor: '#404eed',
         webPreferences:{
             contextIsolation: true,
@@ -144,7 +144,7 @@ ipcMain.on('signup', (event,username,password) => {
             console.log(error)
             let options = {
                 type: "error",
-                title: "Sgnup Failed",
+                title: "Signup Failed",
                 message: "Username already taken",
                 buttons: ['ok']
             }
