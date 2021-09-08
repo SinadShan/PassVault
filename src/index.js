@@ -1,3 +1,4 @@
+window.passVaultAPI.checkPlatform()
 
 document.getElementById('signup-link').onclick = function (){ 
     if(this.innerText == 'Signup'){

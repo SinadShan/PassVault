@@ -21,6 +21,9 @@ contextBridge.exposeInMainWorld(
         },
         unmatchingPasswords: () => {
             ipcRenderer.send('unmatchingPasswords')
+        },
+        checkPlatform: () => {
+            ipcRenderer.send('checkPlatform')
         }
     }
 )
@@ -35,4 +38,10 @@ ipcRenderer.on('login-fail',(event) => {
 
 ipcRenderer.on('error-signup',(event,err) => {
     console.log(err)
+})
+
+ipcRenderer.on('platform',(event,platform) => {
+    if(platform=='linux'){
+        document.getElementsByClassName('info')[0].removeAttribute('hidden')
+    }
 })

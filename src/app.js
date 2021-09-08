@@ -215,3 +215,7 @@ ipcMain.on('unmatchingPasswords',(event)=>{
     }
     dialog.showMessageBox(win,options).then()
 })
+
+ipcMain.on('checkPlatform',(event) => {
+    event.reply('platform',process.platform)
+})
