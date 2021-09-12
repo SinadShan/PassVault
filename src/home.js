@@ -17,7 +17,7 @@ for ( item of document.getElementsByClassName('eye')){
 // copy password to clipboard
 for (item of document.getElementsByClassName('clipboard')){
     item.onclick = function(event){
-        console.log(event.target.parentElement.children[0].value)
+        // console.log(event.target.parentElement.children[0].value)
         window.passVaultAPI.copyToClipboard(
             event.target.parentElement.children[0].value
         )
@@ -44,7 +44,7 @@ document.getElementById('cancel').onclick = function (){
 
 // submit new password 
 document.getElementById('new-password-form').addEventListener('submit', function(event){
-    console.log('Clicked submit in add new password')
+    // console.log('Clicked submit in add new password')
     event.preventDefault()
     const form = event.target
     window.passVaultAPI.addPassword(form.website.value,form.password.value)

@@ -1,4 +1,3 @@
-const { compareSync } = require('bcrypt')
 const {ipcRenderer,contextBridge} = require('electron')
 
 contextBridge.exposeInMainWorld(
@@ -44,4 +43,16 @@ ipcRenderer.on('platform',(event,platform) => {
     if(platform=='linux'){
         document.getElementsByClassName('info')[0].removeAttribute('hidden')
     }
+})
+
+ipcRenderer.on('successfullyAddedPassword',(event) => {
+    const title = 'Success'
+    const body = 'Password added successfully.'
+    new Notification(title, {body: body})
+})
+
+ipcRenderer.on('deletedPassword',(event) => {
+    const title = 'Success'
+    const body = 'Password deleted successfully.'
+    new Notification(title, {body: body})
 })

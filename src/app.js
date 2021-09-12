@@ -182,10 +182,11 @@ ipcMain.on('addPassword', function (event,website,password){
     // add password to db
     try{
         db.prepare(`insert into secrets (user,website,password,iv) values ((select id from users where username = ?),?,?,?);`).run(currentUser,website,encryptedPassword,iv)
-
         retrievePasswords()
+        event.reply('successfullyAddedPassword')
     }catch(err){
         // couldn't add new password
+        event.reply('failedToAddPassword')
         console.log(err)
     }
 
@@ -202,6 +203,7 @@ ipcMain.on('deletePassword', (event,website)=> {
         if(result.response == 0){
             const s = db.prepare('delete from secrets where user = (select id from users where username=?) and website=?').run(currentUser,website)
             retrievePasswords()
+            event.reply('deletedPassword')
         }
     })
 })
