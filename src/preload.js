@@ -19,8 +19,8 @@ contextBridge.exposeInMainWorld(
         deletePassword: (website) => {
             ipcRenderer.send('deletePassword', website)
         },
-        unmatchingPasswords: () => {
-            ipcRenderer.send('unmatchingPasswords')
+        displayDialog: (message) => {
+            ipcRenderer.send('displayDialog',message)
         },
         checkPlatform: () => {
             ipcRenderer.send('checkPlatform')

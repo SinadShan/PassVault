@@ -16,7 +16,7 @@ if(process.platform == 'win32'){
 }
 else{
     const user = process.env.USER
-    var db = new Database(`/home/${user}/pwmanager.db`)
+    var db = new Database(`/home/${user}/feature-updates.db`)
 }
 const saltRounds = 10;
 
@@ -206,11 +206,11 @@ ipcMain.on('deletePassword', (event,website)=> {
     })
 })
 
-ipcMain.on('unmatchingPasswords',(event)=>{
+ipcMain.on('displayDialog',(event,message)=>{
     let options= {
         type: "error",
         title: "Error",
-        message: "Passwords do not match",
+        message: message,
         buttons: ['ok']
     }
     dialog.showMessageBox(win,options).then()
