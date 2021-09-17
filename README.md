@@ -10,6 +10,7 @@ With the help of this application you can confidently set unique and complex pas
 
 ## Features
 * Supports multiple users  
+* Password strength indicator
 * Copy passwords to clipboard  
 * Search through passwords
 
