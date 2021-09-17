@@ -66,9 +66,14 @@ input[type=password]:disabled{
     border-top: none;
     border-left: none;
     border-right: none;
+    /* border-color: green; */
     outline: none;
     background: none;
     box-shadow: none;
+}
+
+.form-control.web-password{
+    margin-top: 20px;
 }
 
 .bi-x{
@@ -91,6 +96,12 @@ input[type=password]:disabled{
     transform: scale(1.1);
 }
 
+#new-password-eye{
+    font-size: 1.25rem;
+    top: -30px;
+    left: -10px;
+}
+
 .clipboard{
     font-size: 1.25rem;
     float: right;
@@ -98,6 +109,77 @@ input[type=password]:disabled{
     top: -35px;
     left: 20px;
 }
+
+.strength-meter{
+    font-size:0.5rem;
+    /* top: -10px; */ 
+}
+
+.card .popup{
+    position: absolute;
+    top: -7px;
+    left: -10px; 
+    width:100px;
+    opacity: 0;
+    margin-top: 0;
+    margin-left: 0px;
+    background: grey;
+    font-size: 13px;
+    height: 30px;
+    padding-top: 6px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 10px 10px2 rgba(0,0,0,0.1);
+    transition: 
+        top 200ms ease-out,
+        opacity 200ms ease-out;
+}
+
+.card .popup::before{
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    background: grey;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.strength-meter:hover .popup{
+    top: -15px;
+    opacity: 1;
+}
+
+
+/* .strength-meter:hover~.bi-caret-down-fill{
+    opacity: 1;
+} */
+
+#c1{
+    position: absolute;
+    top:20px;
+    left:15px;
+}
+
+#c2{
+    position: absolute;
+    top:20px;
+    left:30px;
+}
+
+#c3{
+    position: absolute;
+    top:20px;
+    left:45px;
+}
+
+#c4{
+    position: absolute;
+    top:20px;
+    left:60px;
+}
+
 
 
 

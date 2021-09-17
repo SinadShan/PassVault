@@ -12,16 +12,7 @@ body,html{
     border-radius:1rem;
     margin-bottom:10px;
 }
-.contact-image{
-    text-align: center;
-}
-.contact-image img{
-    border-radius: 300px;
-    max-width: 75px;
-    min-width: 50px;
-    margin-top: -3%;
-    transform: rotate(29deg);
-}
+
 .contact-form form{
     padding: 5% 5% 10px;
     /* margin-bottom:30px ; */
@@ -68,6 +59,26 @@ body,html{
 
 .info:hover{
     opacity: 0.8;
+}
+
+.eye{
+    color:grey;
+    position: absolute;
+    font-size: 1.35rem;
+    top: 14px;
+    right: 20px;
+}
+
+.eye:hover{
+    transform: scale(1.03);
+}
+
+.form-floating .form-control{
+    height: fit-content;
+}
+
+.signup-password label{
+    top:20px;
 }
 
 p a{

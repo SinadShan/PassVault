@@ -9,7 +9,7 @@ function passwordStrength(password){
     if(password.length <= 4){
         score = 0;
         // console.log(`Too Weak: ${score}`);
-        return score;
+        return 'Too weak';
     }
 
     if(password.length <=8 ){

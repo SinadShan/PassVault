@@ -1,5 +1,19 @@
 window.passVaultAPI.checkPlatform()
 
+for ( item of document.getElementsByClassName('eye')){
+    item.onclick = function (){
+        if(this.classList.contains('bi-eye')){
+            this.classList.remove('bi-eye')
+            this.classList.add('bi-eye-slash')
+            this.parentElement.children[0].setAttribute('type','text')
+        }else{
+            this.classList.remove('bi-eye-slash')
+            this.classList.add('bi-eye')
+            this.parentElement.children[0].setAttribute('type','password')
+        }
+    }
+}
+
 document.getElementById('signup-link').onclick = function (){ 
     if(this.innerText == 'Signup'){
         document.getElementById('signup-password').removeAttribute('hidden')

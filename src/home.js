@@ -30,6 +30,8 @@ document.getElementById('new-password').onclick = function(){
     document.getElementById('cancel').removeAttribute('hidden')
     document.getElementsByClassName('new-password-req')[0].setAttribute('required','')
     document.getElementsByClassName('new-password-req')[1].setAttribute('required','')
+    document.getElementsByClassName('new-password-req')[0].value=''
+    document.getElementsByClassName('new-password-req')[1].value=''
     this.hidden = 'true'
 }
 
@@ -53,7 +55,7 @@ document.getElementById('new-password-form').addEventListener('submit', function
 // delete a password
 for(item of document.getElementsByClassName('bi-x')){
     item.addEventListener('click',function (){
-        console.log(this.id+' was clicked')
+        // console.log(this.id+' was clicked')
         window.passVaultAPI.deletePassword(this.id.slice(0,-2))
     })
 }
@@ -65,9 +67,10 @@ searchForm.addEventListener('keyup',search)
 function search(e){
     
     const cards = document.querySelectorAll('.card')
-    
+
     for(i = 0; i < cards.length-1; i++){
-        if(cards[i].children[0].children[1].children[1].textContent.search(new RegExp(e.target.value,'i'))<0){
+        const index = cards[i].classList[1]
+        if(document.getElementsByClassName(`card-title ${index}`)[0].textContent.search(new RegExp(e.target.value,'i'))<0){
             cards[i].parentElement.style.display = "none"
         }
         else{
@@ -75,4 +78,10 @@ function search(e){
         }
     }
     
+}
+
+// password strength
+const password = document.getElementsByClassName('web-password')
+for(item of password){
+    window.passVaultAPI.passwordStrength(item.classList[2],item.value)
 }

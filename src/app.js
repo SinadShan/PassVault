@@ -10,13 +10,14 @@ const bcrypt = require('bcrypt');
 const path = require('path')        
 const crypto = require('crypto')
 const ejse = require('ejs-electron')
+const passwordStrength = require('./pwdstrength.js')
 
 if(process.platform == 'win32'){
     var db = new Database('pwmanager.db')
 }
 else{
     const user = process.env.USER
-    var db = new Database(`/home/${user}/feature-updates.db`)
+    var db = new Database(`/home/${user}/pwmanager.db`)
 }
 const saltRounds = 10;
 
@@ -220,4 +221,9 @@ ipcMain.on('displayDialog',(event,message)=>{
 
 ipcMain.on('checkPlatform',(event) => {
     event.reply('platform',process.platform)
+})
+
+ipcMain.on('passwordStrength',(event,elementID,password) => {
+    const pstrength = passwordStrength(password)
+    event.reply('strengthCalculated',elementID,pstrength)
 })

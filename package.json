@@ -42,7 +42,9 @@
       "icon": "build-res/icons"
     },
     "win": {
-      "target": ["nsis"],
+      "target": [
+        "nsis"
+      ],
       "icon": "build-res/icons"
     }
   }
