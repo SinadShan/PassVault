@@ -21,7 +21,7 @@ PassVault is open-source. If you'd like to help out by adding features, working 
 or assisting in other parts of development, here's how to get started:
 
 ###### To begin working locally:
-
+All pull requests must be directed to the feature-updates branch.
 1. [Fork](https://help.github.com/articles/fork-a-repo/) this repository to your
    own GitHub account
 2. [Clone](https://help.github.com/articles/cloning-a-repository/) it to your
