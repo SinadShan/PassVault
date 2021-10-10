@@ -1,3 +1,4 @@
+import { shell, BrowserWindow } from "electron"
 window.passVaultAPI.checkPlatform()
 
 for ( item of document.getElementsByClassName('eye')){
@@ -56,4 +57,15 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
     }
 })
 
+// Create the browser window.
+let mainWindow = new BrowserWindow({
+  width: 1300,
+  height: 800,
+});
 
+mainWindow.loadFile("index.html");
+
+mainWindow.webContents.on("new-window", function(event, url) {
+  event.preventDefault();
+  shell.openExternal("https://github.com/SinadShan/PassVault/releases");
+});
