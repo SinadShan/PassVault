@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="../node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="homeStyle.css">
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
 </head>
 
 <body>
@@ -50,6 +50,10 @@
                             </div>
 
                             <div class="col"></div>
+                            
+                            <div class="col-2">
+                                <i id='<%= item.website %>-update' class="bi bi-arrow-counterclockwise"></i> 
+                            </div>
 
                             <div class="col-2">
                                 <i id='<%= item.website %>-x' class="bi bi-x"></i>
@@ -111,6 +115,6 @@
     var Details = <%- JSON.stringify(details) %>
 </script>
 
-<script src="home.js"></script>
+<script src="../home.js"></script>
 
 </html>

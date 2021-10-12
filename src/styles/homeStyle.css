@@ -76,13 +76,24 @@ input[type=password]:disabled{
     margin-top: 20px;
 }
 
+.bi-arrow-counterclockwise{
+    position: relative;
+    left: 2.5rem;
+    top: -0.15rem;
+    font-size: 1.25rem;
+}
+
+.bi-x:hover,
+.bi-arrow-counterclockwise:hover{
+    color: #404eed;
+    cursor: pointer;
+}
+
 .bi-x{
     font-size: 1.65rem;
 }
 
-.bi-x:hover{
-    color: #404eed;
-}
+
 
 .eye{
     font-size: 1.4rem;

@@ -44,7 +44,7 @@ function createWindow(){
         alwaysOnTop: true
     })
 
-    splash.loadURL(`file://${__dirname}/splash.html`);
+    splash.loadURL(`file://${__dirname}/windows/splash.html`);
     splash.once('ready-to-show',() => {
         splash.show()
     })
@@ -63,7 +63,7 @@ function createWindow(){
         autoHideMenuBar: true,
         titleBarStyle:'hidden'
     })
-    win.loadFile(__dirname+'/index.html')
+    win.loadFile(__dirname+'/windows/index.html')
     win.once('ready-to-show',() =>{
         setTimeout(()=>{
             splash.destroy()
@@ -96,7 +96,7 @@ function retrievePasswords(){
     // ejs rendering and loading home
     ejse.data('details',details)
     ejse.data('username',currentUser)
-    win.loadURL('file://'+__dirname+'/home.ejs')
+    win.loadURL('file://'+__dirname+'/windows/home.ejs')
 }
 
 ipcMain.on('login', (event, username, password) => {
