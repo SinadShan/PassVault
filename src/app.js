@@ -10,7 +10,8 @@ const bcrypt = require('bcrypt');
 const path = require('path')        
 const crypto = require('crypto')
 const ejse = require('ejs-electron')
-const passwordStrength = require('./pwdstrength.js')
+const passwordStrength = require('./pwdstrength.js');
+const { exec } = require('child_process');
 
 if(process.platform == 'win32'){
     var db = new Database('pwmanager.db')
@@ -226,4 +227,10 @@ ipcMain.on('checkPlatform',(event) => {
 ipcMain.on('passwordStrength',(event,elementID,password) => {
     const pstrength = passwordStrength(password)
     event.reply('strengthCalculated',elementID,pstrength)
+})
+
+ipcMain.on('openReleasesPage',(event) => {
+    
+    exec('xdg-open https://github.com/SinadShan/PassVault/releases',(err,stdout,stderr) => {})
+    event.reply('openedReleasesPage')
 })

@@ -27,6 +27,9 @@ contextBridge.exposeInMainWorld(
         },
         passwordStrength: (elementID,password) => {
             ipcRenderer.send('passwordStrength',elementID,password)
+        },
+        openReleasesPage: () => {
+            ipcRenderer.send('openReleasesPage')
         }
     }
 )
