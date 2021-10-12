@@ -1,5 +1,9 @@
 window.passVaultAPI.checkPlatform()
 
+document.querySelector('p span').addEventListener('click',(e) => {
+    window.passVaultAPI.openReleasesPage();
+})
+
 for ( item of document.getElementsByClassName('eye')){
     item.onclick = function (){
         if(this.classList.contains('bi-eye')){

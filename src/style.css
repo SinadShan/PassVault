@@ -81,11 +81,12 @@ body,html{
     top:20px;
 }
 
-p a{
+p span{
     text-decoration: none;
     color: rgb(165, 211, 252);
 }
 
-p a:hover{
+p span:hover{
+    cursor: pointer;
     color: rgb(0, 0, 0);
 }
