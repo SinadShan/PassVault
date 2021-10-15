@@ -68,7 +68,7 @@ function createWindow(){
         setTimeout(()=>{
             splash.destroy()
             win.show()   
-        },3000)
+        },0)
     })
 
     win.on('closed', ()=>{
@@ -176,9 +176,9 @@ ipcMain.on('addPassword', function (event,website,password){
     let iv = crypto.randomBytes(16)
 
     // key for cipher
-    key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
-    cipher = crypto.createCipheriv('aes-256-cbc',key,iv)
-    encryptedPassword = cipher.update(password,'utf-8','hex')
+    let key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
+    let cipher = crypto.createCipheriv('aes-256-cbc',key,iv)
+    let encryptedPassword = cipher.update(password,'utf-8','hex')
     encryptedPassword += cipher.final('hex')
 
     // add password to db
@@ -233,4 +233,56 @@ ipcMain.on('openReleasesPage',(event) => {
     
     exec('xdg-open https://github.com/SinadShan/PassVault/releases',(err,stdout,stderr) => {})
     event.reply('openedReleasesPage')
+})
+
+ipcMain.on('openUpdatePasswordWindow',(event,website) => {
+    // open update password window
+    updatePass = new BrowserWindow({
+        width: 600,
+        height: 250,
+        resizable: false,
+        parent: win,
+        modal: true,
+        frame: false,
+        backgroundColor: '#36393f',
+        webPreferences:{
+            contextIsolation: true,
+            nodeIntegration: false,
+            preload: path.join(__dirname,"preload.js")
+        },
+        autoHideMenuBar: true,
+        titleBarStyle:'hidden'
+    })
+    ejse.data('website',website)
+    updatePass.loadFile(__dirname+'/windows/updatePassword.ejs')
+    updatePass.on('ready-to-show',() => {
+        updatePass.show()
+    })
+})
+
+ipcMain.on('updatePassword',(event,website,password) => {
+    console.log(website," ",password)
+
+    // initialising vector
+    let iv = crypto.randomBytes(16)
+
+    // key for cipher
+    let key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
+    let cipher = crypto.createCipheriv('aes-256-cbc',key,iv)
+    let encryptedPassword = cipher.update(password,'utf-8','hex')
+    encryptedPassword += cipher.final('hex')
+
+    const updatePasswordQuery = db.prepare('update secrets set password = ?,iv = ? where user = (select id from users where username = ?) and website = ? ')
+    updatePasswordQuery.run([encryptedPassword,iv,currentUser,website])
+    
+    // call retrieve passwords
+    retrievePasswords()
+
+    // close window
+    updatePass.destroy()
+
+})
+
+ipcMain.on('closeUpdateWindow',(event)=> {
+    updatePass.destroy()
 })

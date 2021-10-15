@@ -30,6 +30,15 @@ contextBridge.exposeInMainWorld(
         },
         openReleasesPage: () => {
             ipcRenderer.send('openReleasesPage')
+        },
+        openUpdatePasswordWindow: (website) => {
+            ipcRenderer.send('openUpdatePasswordWindow',website)
+        },
+        updatePassword: (website,password) => {
+            ipcRenderer.send('updatePassword',website,password)
+        },
+        closeUpdateWindow: () => {
+            ipcRenderer.send('closeUpdateWindow')
         }
     }
 )

@@ -85,3 +85,10 @@ const password = document.getElementsByClassName('web-password')
 for(item of password){
     window.passVaultAPI.passwordStrength(item.classList[2],item.value)
 }
+
+// update password
+for( item of document.querySelectorAll('.bi-arrow-counterclockwise')){
+    item.addEventListener('click',function (event){
+        window.passVaultAPI.openUpdatePasswordWindow(this.id.slice(0,-7))
+    })
+}
