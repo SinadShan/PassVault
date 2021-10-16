@@ -18,6 +18,7 @@ With the help of this application you can confidently set unique and complex pas
 * Password strength indicator
 * Copy passwords to clipboard  
 * Search through passwords
+* Update password
 * Notifications
 
 ##  Contribute
