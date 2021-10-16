@@ -70,7 +70,8 @@ body,html{
 }
 
 .eye:hover{
-    transform: scale(1.03);
+    cursor: pointer;
+    transform: scale(1.06);
 }
 
 .form-floating .form-control{

@@ -60,4 +60,16 @@ document.getElementsByTagName('form')[0].addEventListener('submit', (event) => {
     }
 })
 
+for (item of document.querySelectorAll('.password')){
+    item.addEventListener('keyup',(event) => {
+        if(event.target.value != ""){
+            event.target.parentElement.children[1].removeAttribute('hidden');
+        }
+        else{
+            event.target.parentElement.children[1].setAttribute('hidden','true');            
+        }
+    })
+}
+
+
 
