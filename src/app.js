@@ -68,7 +68,7 @@ function createWindow(){
         setTimeout(()=>{
             splash.destroy()
             win.show()   
-        },0)
+        },2500)
     })
 
     win.on('closed', ()=>{

@@ -1,6 +1,6 @@
 {
   "name": "passvault",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple app to manage your passwords.",
   "main": "./src/app.js",
   "scripts": {
