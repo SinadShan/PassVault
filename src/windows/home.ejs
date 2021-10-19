@@ -9,32 +9,59 @@
     <link href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
+    <link rel="stylesheet" type="text/css" href="../styles/sidebar.css">
 </head>
 
 <body>
+    <div class="sidebar">
+        <ul class="sidebar-list">
+            <li class="nav-item">
+                <p class='logo'>PASSVAULT</p>
+            </li>
 
-    <div class="container">
-        <div class="header d-flex align-items-center justify-content-center">
-            <div class="col-5">
-                <h1>Your Passwords</h1>
-            </div>
-            <div class="col-5">
-                <form>
-                    <input type="text" id="search" placeholder="search"/>
-                </form>
-            </div>
-            <div class="text-end col-2">
-                <h3 id="username"><%=username%></h3>
-                <a id="logout" href="index.html">Logout</a>
-                <br>
-            </div>
-        </div>
-        <hr style="color: white; height: 2px; margin-bottom: 20px;">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-safe"></i>
+                    <span class="link-text">Passwords</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-person"></i>
+                    <span class="link-text">Account</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="bi bi-bug"></i>
+                    <span class="link-text">Report a bug</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="link-text logout">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+     <div class="container"> 
+        <div class="pb-3 pt-3 search-wrapper">
+            <form>
+                <i class="bi bi-search"></i>
+                <input class="px-5" type="text" id="search" placeholder="Search"/>
+            </form>
+        </div> 
+        <!-- <hr style="color: white; height: 2px; margin-bottom: 20px;"> -->
         <div class="row justify-content-center">
             <% details.forEach ( function (item,index){
             %>
             <!-- webiste Passwords -->
-            <div class="col-8 col-lg-4">
+            <div class="col-8 col-lg-5 col-xl-4">
                 <div class="card <%= index %>">
                     <div class="card-body d-flex flex-column ">        
                         
@@ -61,7 +88,7 @@
                         </div>
                         <div class="row">
                             <!-- <h5 class="card-text">Password</h5> -->
-                            <p class="card-title <%= index %>" ><%= item.website %></p>
+                            <p class="card-title <%= index %>" ><strong><%= item.website %></strong></p>
                             <form method="post">
                                 <div class="form-group">
                                     <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password <%= index %>" value= <%= item.password %> >
@@ -76,7 +103,7 @@
             <% })%>
             
             <!-- add password -->
-            <div class="col-8 col-lg-4">
+            <div class="col-8 col-lg-5 col-xl-4 new-password-card">
                 <div class="card">
                     <div class="card-body d-flex justify-content-center align-items-center">
                         <div class="row">

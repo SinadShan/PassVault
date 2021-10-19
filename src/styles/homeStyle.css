@@ -1,14 +1,14 @@
 html{
     height: 100vh;
 }
+
 body{
-    margin: 2%;
-    background-color: #36393f;
+    background-color: #f2f4f8;
 }
 
 h1{
     color:white;
-    font-size: 2rem;
+    font-size: 2vw;
 }
 
 h3{
@@ -21,18 +21,20 @@ body::-webkit-scrollbar {
 }  
 
 body::-webkit-scrollbar-track {
-    background: #1d1f22;        /* color of the tracking area */
+    background: whitesmoke;        /* color of the tracking area */
   }
   
 body::-webkit-scrollbar-thumb {
-    background-color: #36393f;    /* color of the scroll thumb */
+    background-color: #00306fc5;    /* color of the scroll thumb */
     /* border-radius: 20px;    */
-    border: 3px solid #1d1f22;  
+    border: 3px solid white;  
 }
 
 .card{
+    border: 2.5px solid #00306fa2;
+    border-radius: 15px;
     margin-bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.315) 5px 5px 15px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
     text-align: center;
     height:250px;
 }
@@ -42,17 +44,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card .card-body{
+    border-radius: 15px;
     padding-top: 5px;
     font-size: 2rem;
-    background-color: #36393f;
-    color: white;
-}
-#username{
-    margin: 0;
-}
-
-#logout{
-    text-decoration: none;
+    background-color: white;
+    color: black;
 }
 
 input[type=text],
@@ -62,14 +58,46 @@ input[type=password]:focus,
 input[type=text]:disabled,
 input[type=password]:disabled{
     border-radius: 0;
-    color: white;
+    color: black;
     border-top: none;
     border-left: none;
     border-right: none;
-    /* border-color: green; */
+    border-bottom: 1px solid #00306f;
     outline: none;
     background: none;
     box-shadow: none;
+}
+
+.search-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.bi-search{
+    color: rgba(48, 47, 47, 0.534);
+    position: relative;
+    left: 2.5rem;
+}
+
+#search::placeholder{
+    color: rgba(48, 47, 47, 0.534);
+    font-size: 0.85rem;
+}
+
+#search{
+    width: 17vw;
+    min-width: 15rem;
+    height: 2.5rem;
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    border-radius: 30px;
+    border-bottom: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
+}
+
+#search:focus::placeholder {
+    color: transparent;
 }
 
 .form-control.web-password{
@@ -77,6 +105,7 @@ input[type=password]:disabled{
 }
 
 .bi-arrow-counterclockwise{
+    color: #00306f;
     position: relative;
     left: 2.5rem;
     top: -0.15rem;
@@ -85,23 +114,33 @@ input[type=password]:disabled{
 
 .bi-x:hover,
 .bi-arrow-counterclockwise:hover{
-    color: #404eed;
+    /* color: #00306f; */
     cursor: pointer;
 }
 
 .bi-x{
+    color: #00306f;
     font-size: 1.65rem;
 }
 
+.btn-primary{
+    background-color: #00306f;
+    border: none;
+}
 
+.btn-primary:hover{
+    background-color: #074596;
+}
 
 .eye{
+    color: #00306f;
     font-size: 1.4rem;
     float: right;
     position: relative;
     top: -35px;
     left: -30px;
 }
+
 .eye:hover,
 .clipboard:hover{
     transform: scale(1.1);
@@ -114,6 +153,7 @@ input[type=password]:disabled{
 }
 
 .clipboard{
+    color: #00306f;
     font-size: 1.25rem;
     float: right;
     position: relative;
@@ -122,11 +162,11 @@ input[type=password]:disabled{
 }
 
 .strength-meter{
-    font-size:0.5rem;
-    /* top: -10px; */ 
+    font-size:0.5rem; 
 }
 
 .card .popup{
+    color: white;
     position: absolute;
     top: -7px;
     left: -10px; 
@@ -134,13 +174,13 @@ input[type=password]:disabled{
     opacity: 0;
     margin-top: 0;
     margin-left: 0px;
-    background: grey;
+    background: #00306f;
     font-size: 13px;
     height: 30px;
     padding-top: 6px;
     text-align: center;
     border-radius: 25px;
-    box-shadow: 0 10px 10px2 rgba(0,0,0,0.1);
+    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
     transition: 
         top 200ms ease-out,
         opacity 200ms ease-out;
@@ -151,7 +191,7 @@ input[type=password]:disabled{
     content: "";
     height: 10px;
     width: 10px;
-    background: grey;
+    background: #00306f;
     bottom: -3px;
     left: 50%;
     transform: translateX(-50%) rotate(45deg);
@@ -163,9 +203,9 @@ input[type=password]:disabled{
 }
 
 
-/* .strength-meter:hover~.bi-caret-down-fill{
-    opacity: 1;
-} */
+.bi-circle-fill{
+    color: #00306f;
+}
 
 #c1{
     position: absolute;

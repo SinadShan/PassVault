@@ -71,5 +71,3 @@ for (item of document.querySelectorAll('.password')){
     })
 }
 
-
-

@@ -92,3 +92,11 @@ for( item of document.querySelectorAll('.bi-arrow-counterclockwise')){
         window.passVaultAPI.openUpdatePasswordWindow(this.id.slice(0,-7))
     })
 }
+
+// document.addEventListener('keydown',function (e){
+//     if(e.key.length === 1 && e.key.match(/[a-z]/i) || e.key==='Backspace')
+//         document.getElementById("search").focus();
+//     if(e.key=='Escape'){
+//         document.getElementById('search').blur()
+//     }
+// })
