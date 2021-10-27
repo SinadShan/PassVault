@@ -96,6 +96,7 @@ function retrievePasswords(){
     // ejs rendering and loading home
     ejse.data('details',details)
     ejse.data('username',currentUser)
+    ejse.data('globalPassword',globalPassword)
     win.loadURL('file://'+__dirname+'/windows/home.ejs')
 }
 
@@ -154,6 +155,14 @@ ipcMain.on('signup', (event,username,password) => {
             event.reply('error-signup',error)
         }
     })
+})
+
+ipcMain.on('passwordsView',(event) => {
+    retrievePasswords();
+})
+
+ipcMain.on('accountView',(event) => {
+    win.loadURL('file://'+__dirname+'/windows/account.ejs')
 })
 
 ipcMain.on('copy', (event,password)=>{  

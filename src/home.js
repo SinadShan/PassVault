@@ -1,18 +1,39 @@
 
 // display password
 for ( item of document.getElementsByClassName('eye')){
-    item.onclick = function (){
-        if(this.classList.contains('bi-eye')){
-            this.classList.remove('bi-eye')
-            this.classList.add('bi-eye-slash')
-            this.parentElement.children[0].setAttribute('type','text')
-        }else{
-            this.classList.remove('bi-eye-slash')
-            this.classList.add('bi-eye')
-            this.parentElement.children[0].setAttribute('type','password')
-        }
+    item.onclick = togglePassword
+}
+    
+document.getElementsByClassName('account-eye')[0].onclick = togglePassword
+
+function togglePassword(){
+    if(this.classList.contains('bi-eye')){
+        this.classList.remove('bi-eye')
+        this.classList.add('bi-eye-slash')
+        this.parentElement.children[0].setAttribute('type','text')
+    }else{
+        this.classList.remove('bi-eye-slash')
+        this.classList.add('bi-eye')
+        this.parentElement.children[0].setAttribute('type','password')
     }
 }
+
+// passwordView
+document.querySelectorAll('.nav-link')[0].onclick = () => {
+    console.log('PasswordsView')
+    var passwordsView = document.getElementById("passwords-view");
+    for( item of document.getElementsByTagName('view'))
+        item.style.display = 'none';
+    passwordsView.style.display = 'block';
+} 
+
+document.querySelectorAll('.nav-link')[1].onclick = () => {
+    console.log('accountView')
+    var accountsView = document.getElementById("accounts-view");
+    for( item of document.getElementsByTagName('view'))
+        item.style.display = 'none';
+    accountsView.style.display = 'block';
+} 
 
 // copy password to clipboard
 for (item of document.getElementsByClassName('clipboard')){

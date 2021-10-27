@@ -6,10 +6,6 @@ body{
     background-color: #f2f4f8;
 }
 
-h1{
-    color:white;
-    font-size: 2vw;
-}
 
 h3{
     color:white;
@@ -28,6 +24,11 @@ body::-webkit-scrollbar-thumb {
     background-color: #00306fc5;    /* color of the scroll thumb */
     /* border-radius: 20px;    */
     border: 3px solid white;  
+}
+
+#accounts-view .container{
+    margin: 0 auto;
+    /* padding-top: 5rem; */
 }
 
 .card{
@@ -231,6 +232,40 @@ input[type=password]:disabled{
     left:60px;
 }
 
+.account-container{
+    height: 100vh;
+}
 
+.account-form-container{
+    margin-top: 1.5rem;
+    width: 25rem;
+}
 
+#accounts-view input{
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
+    border-radius: 20px;
+    border-bottom: 0;
+}
 
+#accounts-view .account-eye{
+    cursor: pointer;
+    color: #00306f;
+    font-size: 1.4rem;
+    float: right;
+    position: relative;
+    top: -2.75rem;
+    left: -.85rem;
+}
+
+#me{
+    margin-top: auto;
+}
+
+#me h6{
+    display: inline-block;
+}
+
+#me .bi-heart-fill{
+    color: #00306f;
+}

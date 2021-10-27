@@ -10,6 +10,12 @@ contextBridge.exposeInMainWorld(
         signup: (username,password) => {
             ipcRenderer.send('signup',username,password)
         },
+        passwordsView: () =>{
+            ipcRenderer.send('passwordsView')
+        },
+        accountView: () => {
+            ipcRenderer.send('accountView')
+        },
         copyToClipboard: (password) => {
             ipcRenderer.send('copy',password)
         },

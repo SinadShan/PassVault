@@ -49,95 +49,135 @@
         </ul>
     </div>
     
-     <div class="container"> 
-        <div class="pb-3 pt-3 search-wrapper">
-            <form>
-                <i class="bi bi-search"></i>
-                <input class="px-5" type="text" id="search" placeholder="Search"/>
-            </form>
-        </div> 
-        <!-- <hr style="color: white; height: 2px; margin-bottom: 20px;"> -->
-        <div class="row justify-content-center">
-            <% details.forEach ( function (item,index){
-            %>
-            <!-- webiste Passwords -->
-            <div class="col-8 col-lg-5 col-xl-4">
-                <div class="card <%= index %>">
-                    <div class="card-body d-flex flex-column ">        
-                        
-                        <div class="row">
-                            <div class="col-2 strength-meter">
-                                <i id='c1' class="bi <%= index %>"></i>
-                                <i id='c2' class="bi <%= index %>"></i>
-                                <i id='c3' class="bi <%= index %>"></i>
-                                <i id='c4' class="bi <%= index %>"></i>
-                                <div class="popup <%= index %>">
-                                    <p>password-strength</p> 
-                                </div>
-                            </div>
+    <view id='passwords-view'>
+        <div class="container"> 
+            <div class="pb-3 pt-3 search-wrapper">
+                <form>
+                    <i class="bi bi-search"></i>
+                    <input class="px-5" type="text" id="search" placeholder="Search"/>
+                </form>
+            </div> 
 
-                            <div class="col"></div>
+            <div class="row justify-content-center">
+                <% details.forEach ( function (item,index){
+                %>
+                <!-- webiste Passwords -->
+                <div class="col-8 col-lg-5 col-xl-4">
+                    <div class="card <%= index %>">
+                        <div class="card-body d-flex flex-column ">        
                             
-                            <div class="col-2">
-                                <i id='<%= item.website %>-update' class="bi bi-arrow-counterclockwise"></i> 
-                            </div>
+                            <div class="row">
+                                <div class="col-2 strength-meter">
+                                    <i id='c1' class="bi <%= index %>"></i>
+                                    <i id='c2' class="bi <%= index %>"></i>
+                                    <i id='c3' class="bi <%= index %>"></i>
+                                    <i id='c4' class="bi <%= index %>"></i>
+                                    <div class="popup <%= index %>">
+                                        <p>password-strength</p> 
+                                    </div>
+                                </div>
 
-                            <div class="col-2">
-                                <i id='<%= item.website %>-x' class="bi bi-x"></i>
+                                <div class="col"></div>
+                                
+                                <div class="col-2">
+                                    <i id='<%= item.website %>-update' class="bi bi-arrow-counterclockwise"></i> 
+                                </div>
+
+                                <div class="col-2">
+                                    <i id='<%= item.website %>-x' class="bi bi-x"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- <h5 class="card-text">Password</h5> -->
+                                <p class="card-title <%= index %>" ><strong><%= item.website %></strong></p>
+                                <form method="post">
+                                    <div class="form-group">
+                                        <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password <%= index %>" value= <%= item.password %> >
+                                        <i id='<%= item.website %>-eye' class="bi bi-eye eye"></i>
+                                        <i id='<%= item.website %>-clipboard' class="bi bi-clipboard clipboard"></i>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="row">
-                            <!-- <h5 class="card-text">Password</h5> -->
-                            <p class="card-title <%= index %>" ><strong><%= item.website %></strong></p>
-                            <form method="post">
-                                <div class="form-group">
-                                    <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password <%= index %>" value= <%= item.password %> >
-                                    <i id='<%= item.website %>-eye' class="bi bi-eye eye"></i>
-                                    <i id='<%= item.website %>-clipboard' class="bi bi-clipboard clipboard"></i>
-                                </div>
-                            </form>
+                    </div>
+                </div>
+                <% })%>
+                
+                <!-- add password -->
+                <div class="col-8 col-lg-5 col-xl-4 new-password-card">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <div class="row">
+                                <h5 class="card-title">Add a password</h5>
+                                <form hidden id="new-password-form">
+                                    <div class="form-group">
+                                        <input type="text" name="website" class="form-control new-password-req" placeholder="Website"/>
+                                    </div>    
+                                    <div class="form-group">
+                                        <input type="password" name="password" class="form-control new-password-req" placeholder="Password"/>
+                                        <i id='new-password-eye' class="bi bi-eye eye"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="button" id="cancel" class="form-control btn btn-primary" value="Cancel"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="submit" class="form-control btn btn-primary" value="Submit"/>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- <p class="card-text">Password</p> -->
+                                <a href="#" id="new-password" class="btn btn-primary">New Password</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <span id="notification"></span>
             </div>
-            <% })%>
-            
-            <!-- add password -->
-            <div class="col-8 col-lg-5 col-xl-4 new-password-card">
-                <div class="card">
-                    <div class="card-body d-flex justify-content-center align-items-center">
-                        <div class="row">
-                            <h5 class="card-title">Add a password</h5>
-                            <form hidden id="new-password-form">
-                                <div class="form-group">
-                                    <input type="text" name="website" class="form-control new-password-req" placeholder="Website"/>
-                                </div>    
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control new-password-req" placeholder="Password"/>
-                                    <i id='new-password-eye' class="bi bi-eye eye"></i>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <input type="button" id="cancel" class="form-control btn btn-primary" value="Cancel"/>
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="submit" class="form-control btn btn-primary" value="Submit"/>
-                                    </div>
-                                </div>
-                            </form>
-                            <!-- <p class="card-text">Password</p> -->
-                            <a href="#" id="new-password" class="btn btn-primary">New Password</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <span id="notification"></span>
+
         </div>
+    </view>
+    
+    <view id='accounts-view' style='display: none;'>
+        <div class="container">
 
-    </div>
+            <div class="d-flex flex-column align-items-center account-container">
+                <div class="pt-4">
+                    <h1>Account</h1>
+                </div>
+
+                <div>
+                    <i class="bi bi-person-circle" style="font-size: 10rem;"></i>
+                </div>
+
+                <div>
+                    <h2><%= username %></h2>
+                </div>
+
+                <div class="account-form-container">
+                    <form>
+                        <div class="form-group form-floating">
+                            <input type="password" disabled value="<%=globalPassword%>" class="form-control">
+                            <label>Master Password:</label>
+                            <i class="bi bi-eye account-eye global-password"></i>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="pb-4" id="me">
+                    <h6>Made with</h6>
+                    <i class="bi bi-heart-fill px-1"></i>
+                    <h6>by Sinadin Shan</h6>
+                </div>
+                
+            </div>
+
+        </div>
+    </view>
 
 
 </body>
+
 <script>
     var Details = <%- JSON.stringify(details) %>
 </script>
