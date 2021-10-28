@@ -5,7 +5,7 @@ body{
 
 .container-fluid{
     height: 100vh;
-    background-color: #6975fa;
+    background: linear-gradient(45deg, #124b96, #414EBE);
 }
 
 .bi-safe{
