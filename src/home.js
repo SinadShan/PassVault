@@ -102,9 +102,43 @@ function search(e){
 }
 
 // password strength
-const password = document.getElementsByClassName('web-password')
-for(item of password){
-    window.passVaultAPI.passwordStrength(item.classList[2],item.value)
+// const password = document.getElementsByClassName('web-password')
+// for(item of password){
+//     window.passVaultAPI.passwordStrength(item.classList[2],item.value)
+// }
+for (item of document.getElementsByClassName('strength-meter')){
+    const itags = item.children
+    if(item.classList[2] === 'score-0'){
+        itags[0].classList.add('bi-circle-fill')
+        itags[1].classList.add('bi-circle')
+        itags[2].classList.add('bi-circle')
+        itags[3].classList.add('bi-circle')
+        itags[4].textContent='Too Weak'
+    }
+    
+    if(item.classList[2] === 'score-1'){
+        itags[0].classList.add('bi-circle-fill')
+        itags[1].classList.add('bi-circle-fill')
+        itags[2].classList.add('bi-circle')
+        itags[3].classList.add('bi-circle')
+        itags[4].textContent='Weak'   
+    }
+    
+    if(item.classList[2] === 'score-2'){
+        itags[0].classList.add('bi-circle-fill')
+        itags[1].classList.add('bi-circle-fill')
+        itags[2].classList.add('bi-circle-fill')
+        itags[3].classList.add('bi-circle')
+        itags[4].textContent='Medium'
+    }
+    
+    if(item.classList[2] === 'score-3'){
+        itags[0].classList.add('bi-circle-fill')
+        itags[1].classList.add('bi-circle-fill')
+        itags[2].classList.add('bi-circle-fill')
+        itags[3].classList.add('bi-circle-fill')
+        itags[4].textContent='Strong'
+    }
 }
 
 // update password

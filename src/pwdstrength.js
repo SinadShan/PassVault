@@ -1,3 +1,4 @@
+let obj = {}
 
 function passwordStrength(password){
 
@@ -9,7 +10,9 @@ function passwordStrength(password){
     if(password.length <= 4){
         score = 0;
         // console.log(`Too Weak: ${score}`);
-        return 'Too weak';
+        obj.strength = 'Too weak';
+        obj.score = 0;
+        return obj;
     }
 
     if(password.length <=8 ){
@@ -20,20 +23,29 @@ function passwordStrength(password){
         score = password.search(re_specials)>=0 ? score+1: score;
         if(score == 0){
             // console.log(`Too weak: ${score}`);
-            return 'Too weak';
-
+            obj.strength = 'Too weak';
+            obj.score = 0;
+            return obj;
         }
         if(score == 1){
             // console.log(`Weak: ${score}`);
-            return 'Weak';
+            obj.strength = 'Weak';
+            obj.score = 1;
+            return obj;
+
         }
         if(score ==2 || score == 3){
             // console.log(`Medium: ${score}`);
-            return 'Medium';
+            obj.strength = 'Medium';
+            obj.score = 2;
+            return obj;
+
         }
         if(score == 3 && password.length>=7){
             // console.log(`Strong: ${score}`);
-            return 'Strong';
+            obj.strength = 'Strong';
+            obj.score = 3;
+            return obj;
         }
 
     }
@@ -46,10 +58,14 @@ function passwordStrength(password){
         score = password.search(re_specials)>=0 ? score+1: score;
         if(score > 2 ){
             // console.log(`Strong: ${score}`);
-            return 'Strong';
+            obj.strength = 'Strong';
+            obj.score = 3;
+            return obj;
         }
         // console.log(`Medium: ${score}`);
-        return 'Medium';
+        obj.strength = 'Medium';
+        obj.score = 2;
+        return obj;
     }
 
     if(password.length < 13){
@@ -60,17 +76,23 @@ function passwordStrength(password){
         score = password.search(re_specials)>=0 ? score+1: score;
         if(score>2){
             // console.log(`Strong: ${score}`);
-            return 'Strong';
+            obj.strength = 'Strong';
+            obj.score = 3;
+            return obj;
         }
         // console.log(`Medium: ${score}`);
-        return 'Medium';
+        obj.strength = 'Medium';
+        obj.score = 2;
+        return obj;
     }
 
     if(password.length >= 13)
     {
         score=4;
         // console.log(`Strong: ${score}`);
-        return 'Strong';
+        obj.strength = 'Strong';
+        obj.score = 3;
+        return obj;
     }
     
 }

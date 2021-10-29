@@ -26,9 +26,9 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid white;  
 }
 
-#accounts-view .container{
-    margin: 0 auto;
-    /* padding-top: 5rem; */
+#accounts-view .container-fluid{
+    width: 80%;
+    padding-left: 8rem;
 }
 
 .card{
@@ -238,7 +238,7 @@ input[type=password]:disabled{
 
 .account-form-container{
     margin-top: 1.5rem;
-    width: 25rem;
+    width: 50%;
 }
 
 #accounts-view input{

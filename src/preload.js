@@ -31,9 +31,6 @@ contextBridge.exposeInMainWorld(
         checkPlatform: () => {
             ipcRenderer.send('checkPlatform')
         },
-        passwordStrength: (elementID,password) => {
-            ipcRenderer.send('passwordStrength',elementID,password)
-        },
         openReleasesPage: () => {
             ipcRenderer.send('openReleasesPage')
         },
@@ -84,39 +81,4 @@ ipcRenderer.on('strengthCalculated',(event,elementID,strength) => {
     assignStrengthIcon(elementID,strength)
 })
 
-function assignStrengthIcon(elementID,strength){
-    // console.log(elementID,' : ',strength)
     
-    if(strength === 'Too weak'){
-        document.getElementsByClassName(elementID)[1].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[2].classList.add('bi-circle')
-        document.getElementsByClassName(elementID)[3].classList.add('bi-circle')
-        document.getElementsByClassName(elementID)[4].classList.add('bi-circle')
-        document.getElementsByClassName(elementID)[5].textContent='Too Weak'
-    }
-
-    if(strength === 'Weak'){
-        document.getElementsByClassName(elementID)[1].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[2].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[3].classList.add('bi-circle')
-        document.getElementsByClassName(elementID)[4].classList.add('bi-circle')
-        document.getElementsByClassName(elementID)[5].textContent='Weak'   
-    }
-
-    if(strength === 'Medium'){
-        document.getElementsByClassName(elementID)[1].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[2].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[3].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[4].classList.add('bi-circle')
-        document.getElementsByClassName(elementID)[5].textContent='Medium'
-    }
-
-    if(strength === 'Strong'){
-        document.getElementsByClassName(elementID)[1].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[2].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[3].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[4].classList.add('bi-circle-fill')
-        document.getElementsByClassName(elementID)[5].textContent='Strong'
-    }
-
-}

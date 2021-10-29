@@ -32,6 +32,8 @@ createPasswordsTableQuery.run()
 let win
 let currentUser
 let globalPassword
+let averagePasswordStrength = 0
+let passwordCount = 0
 
 function createWindow(){
     splash = new BrowserWindow({
@@ -91,12 +93,17 @@ function retrievePasswords(){
         decryptedPassword = decipher.update(item.password,'hex','utf-8')
         decryptedPassword += decipher.final('utf-8')
         item.password = decryptedPassword
+        item.score = passwordStrength(item.password).score
+        // console.log(item.pstrength)
+        passwordCount++
     });
 
     // ejs rendering and loading home
     ejse.data('details',details)
     ejse.data('username',currentUser)
     ejse.data('globalPassword',globalPassword)
+    ejse.data('passwordCount',passwordCount)
+    ejse.data('averagePasswordStrength',averagePasswordStrength)
     win.loadURL('file://'+__dirname+'/windows/home.ejs')
 }
 
@@ -116,7 +123,7 @@ ipcMain.on('login', (event, username, password) => {
             currentUser = username
             globalPassword = password
 
-            retrievePasswords()          
+            retrievePasswords()
         }
         else{
             dialog.showMessageBox(win,options).then()
@@ -159,10 +166,6 @@ ipcMain.on('signup', (event,username,password) => {
 
 ipcMain.on('passwordsView',(event) => {
     retrievePasswords();
-})
-
-ipcMain.on('accountView',(event) => {
-    win.loadURL('file://'+__dirname+'/windows/account.ejs')
 })
 
 ipcMain.on('copy', (event,password)=>{  
@@ -233,9 +236,17 @@ ipcMain.on('checkPlatform',(event) => {
     event.reply('platform',process.platform)
 })
 
-ipcMain.on('passwordStrength',(event,elementID,password) => {
-    const pstrength = passwordStrength(password)
-    event.reply('strengthCalculated',elementID,pstrength)
+// ipcMain.on('passwordStrength',(event,elementID,password) => {
+//     const pstrength = passwordStrength(password);
+//     passwordCount++;
+//     averagePasswordStrength += pstrength.score;
+//     event.reply('strengthCalculated',elementID,pstrength);
+// })
+
+ipcMain.on('strengthCalculated',(event) => {
+    averagePasswordStrength /= passwordCount;
+    ejse.data('averagePasswordStrenngth', averagePasswordStrength)
+    ejse.data('passwordCount', passwordCount)
 })
 
 ipcMain.on('openReleasesPage',(event) => {

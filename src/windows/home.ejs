@@ -67,7 +67,7 @@
                         <div class="card-body d-flex flex-column ">        
                             
                             <div class="row">
-                                <div class="col-2 strength-meter">
+                                <div class="col-2 strength-meter score-<%=item.score%> ">
                                     <i id='c1' class="bi <%= index %>"></i>
                                     <i id='c2' class="bi <%= index %>"></i>
                                     <i id='c3' class="bi <%= index %>"></i>
@@ -139,7 +139,7 @@
     </view>
     
     <view id='accounts-view' style='display: none;'>
-        <div class="container">
+        <div class="container-fluid">
 
             <div class="d-flex flex-column align-items-center account-container">
                 <div class="pt-4">
@@ -162,6 +162,27 @@
                             <i class="bi bi-eye account-eye global-password"></i>
                         </div>
                     </form>
+                </div>
+
+                <div class="row col-6 justify-content-center">
+                    <div class="p-2 col-sm-12 col-lg-6">
+                        <form>
+                            <div class="form-group form-floating">
+                                <input type="text" disabled value="<%=passwordCount%>" class="form-control">
+                                <label>Number of Passwords:</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="p-2 col-sm-12 col-lg-6">
+                        <form>
+                            <div class="form-group form-floating">
+                                <input type="text" disabled value="<%= averagePasswordStrength%>" class="form-control">
+                                <label>Average password strength:</label>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
 
                 <div class="pb-4" id="me">
