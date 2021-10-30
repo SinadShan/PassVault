@@ -32,8 +32,6 @@ createPasswordsTableQuery.run()
 let win
 let currentUser
 let globalPassword
-let averagePasswordStrength = 0
-let passwordCount = 0
 
 function createWindow(){
     splash = new BrowserWindow({
@@ -86,6 +84,9 @@ app.on('ready', createWindow)
 function retrievePasswords(){
     // deciphering password
     // include error handling!
+    let passwordCount = 0;
+    let averagePasswordStrength = 0
+
     const details = db.prepare('select s.website,s.password,s.iv from secrets s where s.user = (select id from users where username = ?);').all(currentUser) 
     let key = crypto.createHash('sha256').update(globalPassword).digest('hex').slice(0,32)
     details.forEach(item => {
@@ -94,9 +95,16 @@ function retrievePasswords(){
         decryptedPassword += decipher.final('utf-8')
         item.password = decryptedPassword
         item.score = passwordStrength(item.password).score
-        // console.log(item.pstrength)
+        averagePasswordStrength += item.score
         passwordCount++
     });
+
+    averagePasswordStrength /= passwordCount
+    averagePasswordStrength = Math.floor(averagePasswordStrength)
+    averagePasswordStrength = averagePasswordStrength===0?'Too Weak':
+    averagePasswordStrength===1?'Weak':
+    averagePasswordStrength===2?'Medium':
+    averagePasswordStrength===3?'Strong':'';
 
     // ejs rendering and loading home
     ejse.data('details',details)
@@ -183,7 +191,7 @@ ipcMain.on('copy', (event,password)=>{
 // add password to db
 ipcMain.on('addPassword', function (event,website,password){
     // encrypt password
-
+    console.log(password)
     // initialising vector
     let iv = crypto.randomBytes(16)
 
@@ -192,7 +200,7 @@ ipcMain.on('addPassword', function (event,website,password){
     let cipher = crypto.createCipheriv('aes-256-cbc',key,iv)
     let encryptedPassword = cipher.update(password,'utf-8','hex')
     encryptedPassword += cipher.final('hex')
-
+    console.log(encryptedPassword)
     // add password to db
     try{
         db.prepare(`insert into secrets (user,website,password,iv) values ((select id from users where username = ?),?,?,?);`).run(currentUser,website,encryptedPassword,iv)
@@ -236,18 +244,6 @@ ipcMain.on('checkPlatform',(event) => {
     event.reply('platform',process.platform)
 })
 
-// ipcMain.on('passwordStrength',(event,elementID,password) => {
-//     const pstrength = passwordStrength(password);
-//     passwordCount++;
-//     averagePasswordStrength += pstrength.score;
-//     event.reply('strengthCalculated',elementID,pstrength);
-// })
-
-ipcMain.on('strengthCalculated',(event) => {
-    averagePasswordStrength /= passwordCount;
-    ejse.data('averagePasswordStrenngth', averagePasswordStrength)
-    ejse.data('passwordCount', passwordCount)
-})
 
 ipcMain.on('openReleasesPage',(event) => {
     

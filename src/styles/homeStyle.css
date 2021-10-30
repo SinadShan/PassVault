@@ -242,6 +242,7 @@ input[type=password]:disabled{
 }
 
 #accounts-view input{
+    height: auto;
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
     border-radius: 20px;
