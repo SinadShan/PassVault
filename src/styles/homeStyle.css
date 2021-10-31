@@ -26,6 +26,11 @@ body::-webkit-scrollbar-thumb {
     border: 3px solid white;  
 }
 
+#passwords-view .container-fluid{
+    padding-left: 10.5rem;
+    padding-right: 5rem;
+}
+
 #accounts-view .container-fluid{
     width: 80%;
     padding-left: 8rem;
@@ -108,8 +113,8 @@ input[type=password]:disabled{
 .bi-arrow-counterclockwise{
     color: #00306f;
     position: relative;
-    left: 2.5rem;
-    top: -0.15rem;
+    left: 1rem;
+    top: -.25rem;
     font-size: 1.25rem;
 }
 
@@ -117,9 +122,13 @@ input[type=password]:disabled{
 .bi-arrow-counterclockwise:hover{
     /* color: #00306f; */
     cursor: pointer;
+    
 }
 
 .bi-x{
+    position: relative;
+    left: 1rem;
+    top: -.15rem;
     color: #00306f;
     font-size: 1.65rem;
 }
@@ -239,6 +248,7 @@ input[type=password]:disabled{
 .account-form-container{
     margin-top: 1.5rem;
     width: 50%;
+    height: 4rem;
 }
 
 #accounts-view input{
@@ -269,4 +279,8 @@ input[type=password]:disabled{
 
 #me .bi-heart-fill{
     color: #00306f;
+}
+
+#info-view .container-fluid{
+    background-color: aliceblue;
 }

@@ -127,7 +127,7 @@ ipcMain.on('login', (event, username, password) => {
 
     async function login(loginPassword,dbPassword){
         if(await bcrypt.compare(loginPassword,dbPassword)){
-            console.log('login success')
+            // console.log('login success')
             currentUser = username
             globalPassword = password
 
@@ -135,7 +135,7 @@ ipcMain.on('login', (event, username, password) => {
         }
         else{
             dialog.showMessageBox(win,options).then()
-            console.log("Login Failed")
+            // console.log("Login Failed")
             event.reply('login-fail')
         }          
     }
@@ -144,7 +144,7 @@ ipcMain.on('login', (event, username, password) => {
             login(password,loginDetails.password)
     }else{
         dialog.showMessageBox(win,options).then()
-        console.log("Login failed")
+        // console.log("Login failed")
         event.reply('login-fail')
     }
 
@@ -191,7 +191,6 @@ ipcMain.on('copy', (event,password)=>{
 // add password to db
 ipcMain.on('addPassword', function (event,website,password){
     // encrypt password
-    console.log(password)
     // initialising vector
     let iv = crypto.randomBytes(16)
 
@@ -200,7 +199,6 @@ ipcMain.on('addPassword', function (event,website,password){
     let cipher = crypto.createCipheriv('aes-256-cbc',key,iv)
     let encryptedPassword = cipher.update(password,'utf-8','hex')
     encryptedPassword += cipher.final('hex')
-    console.log(encryptedPassword)
 
     // add password to db
     try{
@@ -278,7 +276,6 @@ ipcMain.on('openUpdatePasswordWindow',(event,website) => {
 })
 
 ipcMain.on('updatePassword',(event,website,password) => {
-    console.log(website," ",password)
 
     // initialising vector
     let iv = crypto.randomBytes(16)

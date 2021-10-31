@@ -5,7 +5,7 @@ function passwordStrength(password){
     let score = 0;
     let re_num = new RegExp(/.*[1234567890].*/);
     let re_caps = new RegExp(/([A-Z].*[a-z].*)|([a-z].*[A-Z].*)/);
-    let re_specials = new RegExp(/.*[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~].*/);
+    let re_specials = new RegExp(/.*[`! @#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~].*/);
     
     if(password.length <= 4){
         score = 0;
