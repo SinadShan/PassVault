@@ -92,7 +92,7 @@
                                 <p class="card-title <%= index %>" ><strong><%= item.website %></strong></p>
                                 <form method="post">
                                     <div class="form-group">
-                                        <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password <%= index %>" value= <%= item.password %> >
+                                        <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password <%= index %>" value= "<%= item.password %>" >
                                         <i id='<%= item.website %>-eye' class="bi bi-eye eye"></i>
                                         <i id='<%= item.website %>-clipboard' class="bi bi-clipboard clipboard"></i>
                                     </div>

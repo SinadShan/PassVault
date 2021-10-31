@@ -201,6 +201,7 @@ ipcMain.on('addPassword', function (event,website,password){
     let encryptedPassword = cipher.update(password,'utf-8','hex')
     encryptedPassword += cipher.final('hex')
     console.log(encryptedPassword)
+
     // add password to db
     try{
         db.prepare(`insert into secrets (user,website,password,iv) values ((select id from users where username = ?),?,?,?);`).run(currentUser,website,encryptedPassword,iv)
