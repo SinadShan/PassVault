@@ -191,11 +191,46 @@
 
     <view id='info-view' style='display: none;'>
         <div class="container-fluid">
-            <div class="pb-4" id="me">
-                <h6>Made with</h6>
-                <i class="bi bi-heart-fill px-1"></i>
-                <h6>by Sinadin Shan</h6>
+            <div class="d-flex flex-column align-items-center info-container">
+                <div  id="me">
+                    <h6>Made with</h6>
+                    <i class="bi bi-heart-fill px-1"></i>
+                    <h6> by</h6>
+                </div>
+
+                <div>
+                    <h1><strong>Sinadin Shan</strong></h1>
+                </div>
+
+                <div class="text-center mt-4">
+                    <h6  class="text-muted">Contact Me</h6>
+
+                    <i class="bi bi-envelope px-2 text-muted" ></i>
+                    <h6  class="text-muted" style="display: inline-block;position: relative;top: -1.35px;">sinadinshan66@gmail.com</h6>
+                </div>
+
+                <div class="row col-6 p-3 justify-content-center">
+                    <div class="mb-2 col-auto">
+                        <button id="bug-button" class="form-control btn btn-primary">
+                            <i class="px-2 bi bi-bug"></i>
+                            Report a bug
+                        </button>
+                    </div>
+
+                    <div class="col-auto">
+                        <button id="request-feature-button" class="form-control btn btn-primary">
+                            <i class="px-2 bi bi-plus-circle"></i>
+                            Request a Feature
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-4 text-center" style="width: 62.5%">
+                    <h6>If you appreciate this app, consider making a donation to the nearest charity or an open source project of your choice</h6>
+                </div>
+
             </div>
+            
         </div>
     </view>
 

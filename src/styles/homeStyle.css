@@ -269,8 +269,9 @@ input[type=password]:disabled{
     left: -.85rem;
 }
 
-#me{
-    margin-top: auto;
+.info-container{
+    padding-left: 8rem;
+    padding-top: 25vh;
 }
 
 #me h6{
@@ -281,6 +282,7 @@ input[type=password]:disabled{
     color: #00306f;
 }
 
-#info-view .container-fluid{
-    background-color: aliceblue;
+#bug-button,
+#request-feature-button{
+    height: 2.5rem;
 }

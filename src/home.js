@@ -20,19 +20,29 @@ function togglePassword(){
 
 // passwordView
 document.querySelectorAll('.nav-link')[0].onclick = () => {
-    console.log('PasswordsView')
+
     var passwordsView = document.getElementById("passwords-view");
     for( item of document.getElementsByTagName('view'))
         item.style.display = 'none';
     passwordsView.style.display = 'block';
 } 
 
+// accountsView
 document.querySelectorAll('.nav-link')[1].onclick = () => {
-    console.log('accountView')
+
     var accountsView = document.getElementById("accounts-view");
     for( item of document.getElementsByTagName('view'))
         item.style.display = 'none';
     accountsView.style.display = 'block';
+} 
+
+// info-View
+document.querySelectorAll('.nav-link')[2].onclick = () => {
+
+    var infoView = document.getElementById("info-view");
+    for( item of document.getElementsByTagName('view'))
+        item.style.display = 'none';
+    infoView.style.display = 'block';
 } 
 
 // copy password to clipboard
