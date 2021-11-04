@@ -29,7 +29,8 @@
   "devDependencies": {
     "electron": "^13.1.6",
     "electron-builder": "^22.11.7",
-    "node-pre-gyp": "^0.17.0"
+    "node-pre-gyp": "^0.17.0",
+    "electron-reload": "^2.0.0-alpha.1"
   },
   "build": {
     "appId": "com.app.passvault",

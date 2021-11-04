@@ -42,6 +42,9 @@ contextBridge.exposeInMainWorld(
         },
         closeUpdateWindow: () => {
             ipcRenderer.send('closeUpdateWindow')
+        },
+        openLink: (link) => {
+            ipcRenderer.send('openLink',link)
         }
     }
 )

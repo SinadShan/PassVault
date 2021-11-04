@@ -1,7 +1,7 @@
 window.passVaultAPI.checkPlatform()
 
 document.querySelector('p span').addEventListener('click',(e) => {
-    window.passVaultAPI.openReleasesPage();
+    window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/releases');
 })
 
 for ( item of document.getElementsByClassName('eye')){

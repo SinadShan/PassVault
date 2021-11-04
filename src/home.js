@@ -111,11 +111,6 @@ function search(e){
     
 }
 
-// password strength
-// const password = document.getElementsByClassName('web-password')
-// for(item of password){
-//     window.passVaultAPI.passwordStrength(item.classList[2],item.value)
-// }
 for (item of document.getElementsByClassName('strength-meter')){
     const itags = item.children
     if(item.classList[2] === 'score-0'){
@@ -156,6 +151,15 @@ for( item of document.querySelectorAll('.bi-arrow-counterclockwise')){
     item.addEventListener('click',function (event){
         window.passVaultAPI.openUpdatePasswordWindow(this.id.slice(0,-7))
     })
+}
+
+// open issues/bugs page
+document.getElementById('bug-button').onclick = () => {
+    window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/issues/new')
+}
+
+document.getElementById('download-release-button').onclick = () => {
+    window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/releases')
 }
 
 // document.addEventListener('keydown',function (e){

@@ -13,6 +13,11 @@ const ejse = require('ejs-electron')
 const passwordStrength = require('./pwdstrength.js');
 const { exec } = require('child_process');
 
+require('electron-reload')(__dirname+'/../', {
+    // Note that the path to electron may vary according to the main file
+    electron: require(`${__dirname}/../node_modules/electron`)
+});
+
 if(process.platform == 'win32'){
     var db = new Database('pwmanager.db')
 }
@@ -244,9 +249,11 @@ ipcMain.on('checkPlatform',(event) => {
 })
 
 
-ipcMain.on('openReleasesPage',(event) => {
-    
-    exec('xdg-open https://github.com/SinadShan/PassVault/releases',(err,stdout,stderr) => {})
+ipcMain.on('openLink',(event,link) => {
+    if (process.platform == 'linux')
+        exec(`xdg-open ${link}`,(err,stdout,stderr) => {})
+    else
+        exec(`start ${link}`,(err,stdout,stderr) => {})
     event.reply('openedReleasesPage')
 })
 

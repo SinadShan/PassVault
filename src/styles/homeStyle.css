@@ -281,8 +281,3 @@ input[type=password]:disabled{
 #me .bi-heart-fill{
     color: #00306f;
 }
-
-#bug-button,
-#request-feature-button{
-    height: 2.5rem;
-}
