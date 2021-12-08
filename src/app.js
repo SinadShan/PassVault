@@ -13,10 +13,10 @@ const ejse = require('ejs-electron')
 const passwordStrength = require('./pwdstrength.js');
 const { exec } = require('child_process');
 
-require('electron-reload')(__dirname+'/../', {
-    // Note that the path to electron may vary according to the main file
-    electron: require(`${__dirname}/../node_modules/electron`)
-});
+// require('electron-reload')(__dirname+'/../', {
+//     // Note that the path to electron may vary according to the main file
+//     electron: require(`${__dirname}/../node_modules/electron`)
+// });
 
 if(process.platform == 'win32'){
     var db = new Database('pwmanager.db')
@@ -105,11 +105,10 @@ function retrievePasswords(){
     });
 
     averagePasswordStrength /= passwordCount
-    averagePasswordStrength = Math.floor(averagePasswordStrength)
-    averagePasswordStrength = averagePasswordStrength===0?'Too Weak':
-    averagePasswordStrength===1?'Weak':
-    averagePasswordStrength===2?'Medium':
-    averagePasswordStrength===3?'Strong':'';
+    // averagePasswordStrength = Math.floor(averagePasswordStrength)
+    averagePasswordStrength = averagePasswordStrength>2.5?'Strong':
+    averagePasswordStrength>1.5?'Medium':
+    averagePasswordStrength>.5?'Weak':'Too Weak';
 
     // ejs rendering and loading home
     ejse.data('details',details)

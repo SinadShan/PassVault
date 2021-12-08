@@ -1,6 +1,6 @@
 {
   "name": "passvault",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "A simple app to manage your passwords.",
   "main": "./src/app.js",
   "scripts": {
@@ -29,8 +29,9 @@
   "devDependencies": {
     "electron": "^13.1.6",
     "electron-builder": "^22.11.7",
-    "node-pre-gyp": "^0.17.0",
-    "electron-reload": "^2.0.0-alpha.1"
+    "electron-rebuild": "^3.2.5",
+    "electron-reload": "^2.0.0-alpha.1",
+    "node-pre-gyp": "^0.17.0"
   },
   "build": {
     "appId": "com.app.passvault",

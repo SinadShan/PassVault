@@ -16,7 +16,7 @@ function passwordStrength(password){
     }
 
     if(password.length <=8 ){
-        score = 0;
+        score = 1;
         
         score = password.search(re_num)>=0 ? score+1: score;
         score = password.search(re_caps)>=0 ? score+1: score;
@@ -88,7 +88,7 @@ function passwordStrength(password){
 
     if(password.length >= 13)
     {
-        score=4;
+        score=3;
         // console.log(`Strong: ${score}`);
         obj.strength = 'Strong';
         obj.score = 3;
