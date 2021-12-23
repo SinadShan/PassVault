@@ -11,14 +11,16 @@ With the help of this application you can confidently set unique and complex pas
 <div align='center'>
       <img src='./assets/screenshots/passvault_Login.png' style='width: 70%'>
       <img src='./assets/screenshots/passvault_Home.png' style='width: 70%'>
+      <img src='./assets/screenshots/passvault_Account.png' style='width: 70%'>
 </div>
 
 ## Features
 * Supports multiple users  
 * Password strength indicator
 * Copy passwords to clipboard  
-* Search through passwords
+* Search for passwords
 * Update password
+* View average password strength
 * Notifications
 
 ##  Contribute
