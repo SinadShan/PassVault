@@ -99,6 +99,31 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="list" >
+                        <div class="row">
+                            <div class="col-auto d-flex flex-column justify-content-center">
+                                <p class="list-title <%= index %>" ><strong><%= item.website %></strong></p>
+                            </div>
+                            <div class="col d-flex flex-column justify-content-center">
+                                <form method="post">
+                                    <div class="form-group">
+                                        <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password list-password <%= index %>" value= "<%= item.password %>" >
+                                    </div>
+                                </form>
+                                <div class="row justify-content-center list-buttons-row">
+                                    <div class="col-auto" style="padding-right: .25rem;">
+                                        <div class="list-eye-button text-center">
+                                            <div><i id='list-<%= item.website %>-eye' class="bi bi-eye list-eye"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="list-clipboard-button text-center"><i id='list-<%= item.website %>-clipboard' class="bi bi-clipboard list-clipboard"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <% })%>
                 

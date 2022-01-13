@@ -106,7 +106,7 @@ input[type=password]:disabled{
     color: transparent;
 }
 
-.form-control.web-password{
+.web-password{
     margin-top: 20px;
 }
 
@@ -281,3 +281,49 @@ input[type=password]:disabled{
 #me .bi-heart-fill{
     color: #00306f;
 }
+
+.list{
+    background-color: white;
+    padding: 1rem 1.5rem;
+    border: 2.5px solid #00306fa2;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
+    /* text-align: center; */
+}
+
+.list-title{
+    margin: 0;
+}
+.list-password{
+    margin-top: 0;
+}
+
+.list-buttons-row{
+    margin-top: 0.5rem;
+}
+
+.list-eye,
+.list-clipboard{
+    color: #00306f;
+    font-size: 1.4rem;
+}
+
+.list-password{
+    text-align: center;
+}
+
+.list-eye-button,
+.list-clipboard-button{
+    height: 2.15rem;
+    width: 2.15rem;
+    background-color: #f2f4f8;
+    border-radius: 100%;
+}
+
+.list-eye-button:hover,
+.list-clipboard-button:hover{
+    transform: scale(1.1);
+}
+
+
