@@ -51,11 +51,19 @@
     
     <view id='passwords-view'>
         <div class="container-fluid"> 
-            <div class="pb-3 pt-3 search-wrapper">
-                <form>
-                    <i class="bi bi-search"></i>
-                    <input class="px-5" type="text" id="search" placeholder="Search"/>
-                </form>
+            <div class="pb-3 pt-3 header">
+                <div class="col-auto list-icon-wrapper text-center">
+                    <i class="bi bi-list-ul list-icon"></i>
+                </div>
+                <div class="col-auto search-wrapper">
+                    <form>
+                        <i class="bi bi-search"></i>
+                        <input class="px-5" type="text" id="search" placeholder="Search"/>
+                    </form>
+                </div>
+                <div class="col-1" style="visibility: hidden;margin-left:auto;">
+
+                </div>
             </div> 
 
             <div class="row justify-content-center">
@@ -100,15 +108,15 @@
                         </div>
                     </div>
 
-                    <div class="list" >
-                        <div class="row">
+                    <div class="list">
+                        <div class="row justify-space-between">
                             <div class="col-auto d-flex flex-column justify-content-center">
                                 <p class="list-title <%= index %>" ><strong><%= item.website %></strong></p>
                             </div>
                             <div class="col d-flex flex-column justify-content-center">
                                 <form method="post">
                                     <div class="form-group">
-                                        <input type="password" id='<%= item.website %>-form' disabled name="username" class="form-control web-password list-password <%= index %>" value= "<%= item.password %>" >
+                                        <input type="password" id='list-<%= item.website %>-form' disabled name="username" class="form-control web-password list-password <%= index %>" value= "<%= item.password %>" >
                                     </div>
                                 </form>
                                 <div class="row justify-content-center list-buttons-row">

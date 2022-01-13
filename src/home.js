@@ -3,7 +3,11 @@
 for ( item of document.getElementsByClassName('eye')){
     item.onclick = togglePassword
 }
-    
+
+for ( item of document.getElementsByClassName('list-eye')){
+    item.onclick = toggleListPassword
+}
+
 document.getElementsByClassName('account-eye')[0].onclick = togglePassword
 
 function togglePassword(){
@@ -15,6 +19,19 @@ function togglePassword(){
         this.classList.remove('bi-eye-slash')
         this.classList.add('bi-eye')
         this.parentElement.children[0].setAttribute('type','password')
+    }
+}
+
+function toggleListPassword(){
+    let website = this.id.slice(5,-4)
+    if(this.classList.contains('bi-eye')){
+        this.classList.remove('bi-eye')
+        this.classList.add('bi-eye-slash')
+        document.getElementById(`list-${website}-form`).setAttribute('type','text')
+    }else{
+        this.classList.remove('bi-eye-slash')
+        this.classList.add('bi-eye')
+        document.getElementById(`list-${website}-form`).setAttribute('type','password')
     }
 }
 
@@ -54,7 +71,39 @@ for (item of document.getElementsByClassName('clipboard')){
         )
     }
 }
+
+for (item of document.getElementsByClassName('list-clipboard')){
+    item.onclick = function(event){
+        let website = event.target.id.slice(5,-10)
+        let password = document.getElementById(`list-${website}-form`).value
+        // console.log(password)
+        // console.log(event.target.parentElement.children[0].value)
+        window.passVaultAPI.copyToClipboard(password)
+    }
+}
+
+document.getElementsByClassName('list-icon-wrapper')[0].onclick = toggleListView
   
+function toggleListView(){
+    var lists = document.getElementsByClassName("list")
+    var cards = document.getElementsByClassName("card")
+    if( lists[0].style.display === "none" || lists[0].style.display === ""){
+        document.getElementsByClassName("list-icon-wrapper")[0].style.backgroundColor = "#00306f"
+        document.getElementsByClassName("bi-list-ul")[0].style.color = "white"
+        for (item of lists)
+            item.style.display = "block"
+        for (item of cards)
+            item.style.display = "none"
+    }else{
+        document.getElementsByClassName("list-icon-wrapper")[0].style.backgroundColor = "white"
+        document.getElementsByClassName("bi-list-ul")[0].style.color = "black"
+        for(item of lists)
+            item.style.display = "none"
+        for (item of cards)
+            item.style.display = "flex"
+    }
+}
+
 // display new password form
 document.getElementById('new-password').onclick = function(){
     document.getElementById('new-password-form').removeAttribute('hidden')

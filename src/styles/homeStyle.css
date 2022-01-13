@@ -74,15 +74,37 @@ input[type=password]:disabled{
     box-shadow: none;
 }
 
-.search-wrapper{
+.header{
     display: flex;
     justify-content: center;
+}
+
+.list-icon-wrapper{
+    /* margin-right: auto; */
+    padding: .20rem;
+    background-color: white ;
+    /* height: 1.5rem; */
+    width: 2.25rem; 
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
+    border-radius: 5px;
+}
+
+.list-icon-wrapper:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.list-icon{
+    font-size: 1.25rem;
 }
 
 .bi-search{
     color: rgba(48, 47, 47, 0.534);
     position: relative;
     left: 2.5rem;
+}
+.search-wrapper{
+    margin-left: auto;
 }
 
 #search::placeholder{
@@ -154,6 +176,7 @@ input[type=password]:disabled{
 .eye:hover,
 .clipboard:hover{
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 #new-password-eye{
@@ -283,8 +306,9 @@ input[type=password]:disabled{
 }
 
 .list{
+    display: none;
     background-color: white;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1rem;
     border: 2.5px solid #00306fa2;
     border-radius: 15px;
     margin-bottom: 20px;
@@ -322,8 +346,10 @@ input[type=password]:disabled{
 }
 
 .list-eye-button:hover,
-.list-clipboard-button:hover{
+.list-clipboard-button:hover
+{
     transform: scale(1.1);
+    cursor: pointer;
 }
 
 
