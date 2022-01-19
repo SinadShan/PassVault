@@ -66,6 +66,10 @@ document.querySelectorAll('.nav-link')[2].onclick = () => {
 for (item of document.getElementsByClassName('clipboard')){
     item.onclick = function(event){
         // console.log(event.target.parentElement.children[0].value)
+        let notification = document.getElementsByClassName("notification")[0]
+        notification.style.opacity = '1';
+        document.getElementsByClassName("notif-content")[0].innerText = "Copied password to clipboard"
+        setTimeout(() => notification.style.opacity = '0',2000)
         window.passVaultAPI.copyToClipboard(
             event.target.parentElement.children[0].value
         )
@@ -76,8 +80,10 @@ for (item of document.getElementsByClassName('list-clipboard')){
     item.onclick = function(event){
         let website = event.target.id.slice(5,-10)
         let password = document.getElementById(`list-${website}-form`).value
-        // console.log(password)
-        // console.log(event.target.parentElement.children[0].value)
+        let notification = document.getElementsByClassName("notification")[0]
+        notification.style.opacity = '1';
+        document.getElementsByClassName("notif-content")[0].innerText = "Copied password to clipboard"
+        setTimeout(() => notification.style.opacity = '0',2000)
         window.passVaultAPI.copyToClipboard(password)
     }
 }

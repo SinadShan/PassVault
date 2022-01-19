@@ -12,6 +12,7 @@ const crypto = require('crypto')
 const ejse = require('ejs-electron')
 const passwordStrength = require('./pwdstrength.js');
 const { exec } = require('child_process');
+const { electron } = require('process');
 
 // require('electron-reload')(__dirname+'/../', {
 //     // Note that the path to electron may vary according to the main file
@@ -86,7 +87,7 @@ function createWindow(){
 
 app.on('ready', createWindow)
 
-function retrievePasswords(){
+async function retrievePasswords(){
     // deciphering password
     // include error handling!
     let passwordCount = 0;
@@ -116,7 +117,7 @@ function retrievePasswords(){
     ejse.data('globalPassword',globalPassword)
     ejse.data('passwordCount',passwordCount)
     ejse.data('averagePasswordStrength',averagePasswordStrength)
-    win.loadURL('file://'+__dirname+'/windows/home.ejs')
+    await win.loadURL('file://'+__dirname+'/windows/home.ejs')
 }
 
 ipcMain.on('login', (event, username, password) => {
@@ -135,7 +136,7 @@ ipcMain.on('login', (event, username, password) => {
             currentUser = username
             globalPassword = password
 
-            retrievePasswords()
+            await retrievePasswords()
         }
         else{
             dialog.showMessageBox(win,options).then()
@@ -161,7 +162,7 @@ ipcMain.on('signup', (event,username,password) => {
 
             currentUser = username
             globalPassword = password
-            retrievePasswords()
+            retrievePasswords().then()
         }catch(error){
             console.log(error)
             let options = {
@@ -176,8 +177,8 @@ ipcMain.on('signup', (event,username,password) => {
     })
 })
 
-ipcMain.on('passwordsView',(event) => {
-    retrievePasswords();
+ipcMain.on('passwordsView',async (event) => {
+    await retrievePasswords();
 })
 
 ipcMain.on('copy', (event,password)=>{  
@@ -188,7 +189,7 @@ ipcMain.on('copy', (event,password)=>{
         message: "Password copied to clipboard",
         buttons: ['ok']
     }
-    dialog.showMessageBox(win,options).then()
+    // dialog.showMessageBox(win,options).then()
     event.reply('copied')
 })
 
@@ -207,8 +208,7 @@ ipcMain.on('addPassword', function (event,website,password){
     // add password to db
     try{
         db.prepare(`insert into secrets (user,website,password,iv) values ((select id from users where username = ?),?,?,?);`).run(currentUser,website,encryptedPassword,iv)
-        retrievePasswords()
-        event.reply('successfullyAddedPassword')
+        retrievePasswords().then(() => event.reply('successfullyAddedPassword'))
     }catch(err){
         // couldn't add new password
         event.reply('failedToAddPassword')
@@ -217,7 +217,7 @@ ipcMain.on('addPassword', function (event,website,password){
 
 })
 
-ipcMain.on('deletePassword', (event,website)=> {
+ipcMain.on('deletePassword', (event,website) => {
     let options= {
         type: "warning",
         title: "Warning",
@@ -227,8 +227,8 @@ ipcMain.on('deletePassword', (event,website)=> {
     dialog.showMessageBox(win,options).then(result => {
         if(result.response == 0){
             const s = db.prepare('delete from secrets where user = (select id from users where username=?) and website=?').run(currentUser,website)
-            retrievePasswords()
-            event.reply('deletedPassword')
+            retrievePasswords().then(() => event.reply('deletedPassword'))
+            
         }
     })
 })
@@ -296,7 +296,7 @@ ipcMain.on('updatePassword',(event,website,password) => {
     updatePasswordQuery.run([encryptedPassword,iv,currentUser,website])
     
     // call retrieve passwords
-    retrievePasswords()
+    retrievePasswords().then()
 
     // close window
     updatePass.destroy()

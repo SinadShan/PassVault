@@ -1,11 +1,16 @@
-html{
-    height: 100vh;
-}
+/* html{
+    min-height: 100vh;
+} */
 
 body{
+    /* min-height: 100vh; */
     background-color: #f2f4f8;
 }
 
+.container-fluid{
+    position: relative;
+    min-height: 100vh;
+}
 
 h3{
     color:white;
@@ -352,4 +357,50 @@ input[type=password]:disabled{
     cursor: pointer;
 }
 
+.notification-wrapper{
+    min-width: 20rem;
+    max-width: 25%;
+    padding: 0.2rem;
+    position: fixed;
+    bottom: 2rem;
+}
 
+.notification{
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    background-color: white;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.219) ;
+    padding: 1rem;
+    flex-direction: column;
+    border: 1.5px solid #074596;
+    border-radius: 5px;
+    /* color: black; */
+}
+
+.notif-header{
+    color: grey;
+    font-size: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1.5px solid black;
+}
+
+.notif-title{
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+}
+
+.notif-close{
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.notif-close .bi-x-circle{
+    font-size: 1.2rem;
+}
+
+.notif-body{
+    padding: 1rem 0 0;
+}
