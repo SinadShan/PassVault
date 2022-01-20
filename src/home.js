@@ -217,6 +217,10 @@ document.getElementById('download-release-button').onclick = () => {
     window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/releases')
 }
 
+document.getElementsByClassName('bmc-button')[0].onclick = () => {
+    window.passVaultAPI.openLink('https://buymeacoff.ee/sinadshan')
+}
+
 // document.addEventListener('keydown',function (e){
 //     if(e.key.length === 1 && e.key.match(/[a-z]/i) || e.key==='Backspace')
 //         document.getElementById("search").focus();

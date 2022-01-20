@@ -404,3 +404,16 @@ input[type=password]:disabled{
 .notif-body{
     padding: 1rem 0 0;
 }
+
+.bmc-button{
+    display: flex;
+    justify-content: center;
+}
+
+
+.bmc-button:hover{
+    transform: scale(1.025);
+    cursor: pointer;
+}
+
+
