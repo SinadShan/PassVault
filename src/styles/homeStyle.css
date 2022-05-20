@@ -366,7 +366,7 @@ input[type=password]:disabled{
 }
 
 .notification{
-    display: flex;
+    display: none;
     opacity: 0;
     transition: opacity 0.25s ease-in-out;
     background-color: white;

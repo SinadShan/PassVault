@@ -73,6 +73,8 @@ ipcRenderer.on('successfullyAddedPassword',(event) => {
     // new Notification(title, {body: body})
     let notification = document.getElementsByClassName("notification")[0]
     notification.style.opacity = '1';
+    notification.style.display='flex'
+    setTimeout(() => notification.style.display = 'none', 2250)
     document.getElementsByClassName("notif-content")[0].innerText = "New password added."
     setTimeout(() => notification.style.opacity = '0',2000)
 })
@@ -83,6 +85,8 @@ ipcRenderer.on('deletedPassword',(event) => {
     // new Notification(title, {body: body})
     let notification = document.getElementsByClassName("notification")[0]
     notification.style.opacity = '1';
+    notification.style.display='flex'
+    setTimeout(() => notification.style.display = 'none', 2250)
     document.getElementsByClassName("notif-content")[0].innerText = "Password deleted."
     setTimeout(() => notification.style.opacity = '0',2000)
 })
