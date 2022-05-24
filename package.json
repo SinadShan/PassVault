@@ -24,7 +24,8 @@
     "better-sqlite3": "^7.4.1",
     "bootstrap": "^5.0.2",
     "bootstrap-icons": "^1.5.0",
-    "ejs-electron": "^2.1.1"
+    "ejs-electron": "^2.1.1",
+    "node-gyp": "^9.0.0"
   },
   "devDependencies": {
     "electron": "^13.1.6",
@@ -48,6 +49,10 @@
         "nsis"
       ],
       "icon": "build-res/icons"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build-res/icons/icon_512x512.png"
     }
   }
 }

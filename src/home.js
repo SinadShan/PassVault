@@ -120,10 +120,10 @@ function toggleListView(){
 document.getElementById('new-password').onclick = function(){
     document.getElementById('new-password-form').removeAttribute('hidden')
     document.getElementById('cancel').removeAttribute('hidden')
-    document.getElementsByClassName('new-password-req')[0].setAttribute('required','')
-    document.getElementsByClassName('new-password-req')[1].setAttribute('required','')
-    document.getElementsByClassName('new-password-req')[0].value=''
-    document.getElementsByClassName('new-password-req')[1].value=''
+    // document.getElementsByClassName('new-password-req')[0].setAttribute('required','')
+    // document.getElementsByClassName('new-password-req')[1].setAttribute('required','')
+    // document.getElementsByClassName('new-password-req')[0].value=''
+    // document.getElementsByClassName('new-password-req')[1].value=''
     this.hidden = 'true'
 }
 

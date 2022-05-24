@@ -14,17 +14,20 @@ const passwordStrength = require('./pwdstrength.js');
 const { exec } = require('child_process');
 const { electron } = require('process');
 
-// require('electron-reload')(__dirname+'/../', {
-//     // Note that the path to electron may vary according to the main file
-//     electron: require(`${__dirname}/../node_modules/electron`)
-// });
+require('electron-reload')(__dirname+'/../', {
+    // Note that the path to electron may vary according to the main file
+    electron: require(`${__dirname}/../node_modules/electron`)
+});
 
 if(process.platform == 'win32'){
     var db = new Database('pwmanager.db')
 }
-else{
+else if(process.platform == 'linux'){
     const user = process.env.USER
     var db = new Database(`/home/${user}/pwmanager.db`)
+}else{
+    const user = process.env.USER
+    var db = new Database(`/Users/${user}/pwmanager.db`)
 }
 const saltRounds = 10;
 
@@ -67,7 +70,7 @@ function createWindow(){
         },
         show:false,
         autoHideMenuBar: true,
-        titleBarStyle:'hidden'
+        // titleBarStyle:'hidden'
     })
     win.loadFile(__dirname+'/windows/index.html')
     win.once('ready-to-show',() =>{
@@ -251,9 +254,11 @@ ipcMain.on('checkPlatform',(event) => {
 ipcMain.on('openLink',(event,link) => {
     if (process.platform == 'linux')
         exec(`xdg-open ${link}`,(err,stdout,stderr) => {})
-    else
-        exec(`start ${link}`,(err,stdout,stderr) => {})
-    event.reply('openedReleasesPage')
+        else if(process.platform == 'win32')
+            exec(`start ${link}`,(err,stdout,stderr) => {})
+        else
+            exec(`open ${link}`,(err,stdout,stderr) => {})
+        event.reply('openedReleasesPage')
 })
 
 ipcMain.on('openUpdatePasswordWindow',(event,website) => {
