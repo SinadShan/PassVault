@@ -220,14 +220,6 @@ for( item of document.querySelectorAll('.bi-arrow-counterclockwise')){
     })
 }
 
-// open issues/bugs page
-// document.getElementById('bug-button').onclick = () => {
-//     window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/issues/new')
-// }
-
-// document.getElementById('download-release-button').onclick = () => {
-//     window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/releases')
-// }
 
 // document.getElementsByClassName('bmc-button')[0].onclick = () => {
 //     window.passVaultAPI.openLink('https://buymeacoff.ee/sinadshan')
