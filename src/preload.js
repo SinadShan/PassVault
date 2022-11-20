@@ -45,6 +45,9 @@ contextBridge.exposeInMainWorld(
         },
         openLink: (link) => {
             ipcRenderer.send('openLink',link)
+        },
+        toggleInfo: () => {
+            ipcRenderer.send('toggleInfo')
         }
     }
 )

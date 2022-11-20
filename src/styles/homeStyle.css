@@ -84,7 +84,10 @@ input[type=password]:disabled{
     justify-content: center;
 }
 
-.list-icon-wrapper{
+.list-icon-wrapper,
+.info-icon-wrapper{
+    display: flex;
+    align-items: center;
     /* margin-right: auto; */
     padding: .20rem;
     background-color: white ;
@@ -94,12 +97,15 @@ input[type=password]:disabled{
     border-radius: 5px;
 }
 
-.list-icon-wrapper:hover{
+.list-icon-wrapper:hover,
+.info-icon-wrapper:hover{
     transform: scale(1.1);
     cursor: pointer;
 }
 
-.list-icon{
+.list-icon,
+.info-icon{
+    width: 100%;
     font-size: 1.25rem;
 }
 
@@ -152,7 +158,7 @@ input[type=password]:disabled{
     
 }
 
-.bi-x{
+.bi-x:not(.close-info-icon){
     position: relative;
     left: 1rem;
     top: -.15rem;
@@ -298,8 +304,31 @@ input[type=password]:disabled{
 }
 
 .info-container{
-    padding-left: 8rem;
-    padding-top: 25vh;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+.close-button-wrapper{
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
+    border-radius: 30%;
+    height: 1.75rem;
+    width: 1.75rem;
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-info-icon{
+    font-size: 1.5rem;
 }
 
 #me h6{
@@ -351,7 +380,8 @@ input[type=password]:disabled{
 }
 
 .list-eye-button:hover,
-.list-clipboard-button:hover
+.list-clipboard-button:hover,
+.close-button-wrapper:hover
 {
     transform: scale(1.1);
     cursor: pointer;

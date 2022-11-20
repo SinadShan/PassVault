@@ -54,13 +54,13 @@ document.querySelectorAll('.nav-link')[1].onclick = () => {
 } 
 
 // info-View
-document.querySelectorAll('.nav-link')[2].onclick = () => {
+// document.querySelectorAll('.nav-link')[2].onclick = () => {
 
-    var infoView = document.getElementById("info-view");
-    for( item of document.getElementsByTagName('view'))
-        item.style.display = 'none';
-    infoView.style.display = 'block';
-} 
+//     var infoView = document.getElementById("info-view");
+//     for( item of document.getElementsByTagName('view'))
+//         item.style.display = 'none';
+//     infoView.style.display = 'block';
+// } 
 
 // copy password to clipboard
 for (item of document.getElementsByClassName('clipboard')){
@@ -115,6 +115,12 @@ function toggleListView(){
             item.style.display = "flex"
     }
 }
+
+// toggle info window
+document.getElementsByClassName('info-icon-wrapper')[0].onclick = function () {
+    window.passVaultAPI.toggleInfo()
+}
+
 
 // display new password form
 document.getElementById('new-password').onclick = function(){
@@ -215,17 +221,17 @@ for( item of document.querySelectorAll('.bi-arrow-counterclockwise')){
 }
 
 // open issues/bugs page
-document.getElementById('bug-button').onclick = () => {
-    window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/issues/new')
-}
+// document.getElementById('bug-button').onclick = () => {
+//     window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/issues/new')
+// }
 
-document.getElementById('download-release-button').onclick = () => {
-    window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/releases')
-}
+// document.getElementById('download-release-button').onclick = () => {
+//     window.passVaultAPI.openLink('https://github.com/SinadShan/PassVault/releases')
+// }
 
-document.getElementsByClassName('bmc-button')[0].onclick = () => {
-    window.passVaultAPI.openLink('https://buymeacoff.ee/sinadshan')
-}
+// document.getElementsByClassName('bmc-button')[0].onclick = () => {
+//     window.passVaultAPI.openLink('https://buymeacoff.ee/sinadshan')
+// }
 
 // document.addEventListener('keydown',function (e){
 //     if(e.key.length === 1 && e.key.match(/[a-z]/i) || e.key==='Backspace')

@@ -269,8 +269,40 @@ ipcMain.on('openUpdatePasswordWindow',(event,website) => {
         resizable: false,
         parent: win,
         modal: true,
-        frame: false,
+        frame: true,
+        center: false,
         backgroundColor: '#36393f',
+        webPreferences:{
+            contextIsolation: true,
+            nodeIntegration: false,
+            preload: path.join(__dirname,"preload.js")
+        },
+        autoHideMenuBar: true,  
+        titleBarStyle:'hidden'
+    })
+    ejse.data('website',website)
+    updatePass.loadFile(__dirname+'/windows/updatePassword.ejs')
+    updatePass.on('ready-to-show',() => {
+        win.blur()
+        updatePass.show()
+    })
+
+    // updatePass.on('blur',() => updatePass.hide())
+
+})
+
+ipcMain.on('toggleInfo',(event) => {
+    // open info window
+    infoWindow = new BrowserWindow({
+        width: 500,
+        height: 500,
+        resizable: false,
+        parent: win,
+        modal: true,
+        frame: true,
+        center: false,
+        backgroundColor: '#ffffff',
+        show: false,
         webPreferences:{
             contextIsolation: true,
             nodeIntegration: false,
@@ -279,11 +311,13 @@ ipcMain.on('openUpdatePasswordWindow',(event,website) => {
         autoHideMenuBar: true,
         titleBarStyle:'hidden'
     })
-    ejse.data('website',website)
-    updatePass.loadFile(__dirname+'/windows/updatePassword.ejs')
-    updatePass.on('ready-to-show',() => {
-        updatePass.show()
+
+    infoWindow.loadFile(__dirname+'/windows/info.html')
+    infoWindow.on('ready-to-show',() => {
+        infoWindow.show()
     })
+
+    infoWindow.on('blur',() => infoWindow.hide())
 })
 
 ipcMain.on('updatePassword',(event,website,password) => {

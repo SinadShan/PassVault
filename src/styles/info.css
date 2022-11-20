@@ -1,0 +1,10 @@
+.buttons{
+    width: 80%;
+}
+
+
+#download-release-button,
+#bug-button{
+    display: flex;
+    justify-content: center;
+}
