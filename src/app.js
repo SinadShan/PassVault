@@ -43,7 +43,7 @@ let currentUser
 let globalPassword
 
 function createWindow(){
-    splash = new BrowserWindow({
+    let splash = new BrowserWindow({
         height:300,
         width: 400,
         transparent: true,
@@ -229,6 +229,7 @@ ipcMain.on('addPassword', function (event,website,password){
         console.log(err)
     }
 
+    // close add-password window
     BrowserWindow.getFocusedWindow().close()
 })
 
@@ -275,7 +276,7 @@ ipcMain.on('openLink',(event,link) => {
 
 ipcMain.on('openUpdatePasswordWindow',(event,website) => {
     // open update password window
-    updatePass = new BrowserWindow({
+    let updatePass = new BrowserWindow({
         width: 600,
         height: 250,
         resizable: false,
@@ -305,7 +306,7 @@ ipcMain.on('openUpdatePasswordWindow',(event,website) => {
 
 ipcMain.on('toggleInfo',(event) => {
     // open info window
-    infoWindow = new BrowserWindow({
+    let infoWindow = new BrowserWindow({
         width: 500,
         height: 500,
         resizable: false,
@@ -354,8 +355,9 @@ ipcMain.on('updatePassword',(event,website,password) => {
 
 })
 
-ipcMain.on('closeUpdateWindow',(event)=> {
-    updatePass.destroy()
+// Method to close current window
+ipcMain.on('closeWindow',(event)=> {
+    BrowserWindow.getFocusedWindow().destroy()
 })
 
 ipcMain.on('newPassword', () => {
