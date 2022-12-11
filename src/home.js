@@ -122,33 +122,10 @@ document.getElementsByClassName('info-icon-wrapper')[0].onclick = function () {
 }
 
 
-// display new password form
-document.getElementById('new-password').onclick = function(){
-    document.getElementById('new-password-form').removeAttribute('hidden')
-    document.getElementById('cancel').removeAttribute('hidden')
-    // document.getElementsByClassName('new-password-req')[0].setAttribute('required','')
-    // document.getElementsByClassName('new-password-req')[1].setAttribute('required','')
-    // document.getElementsByClassName('new-password-req')[0].value=''
-    // document.getElementsByClassName('new-password-req')[1].value=''
-    this.hidden = 'true'
+// display new password window
+document.getElementsByClassName('add-password-button')[0].onclick= function(){
+    window.passVaultAPI.displayNewPasswordWindow()
 }
-
-// cancel new password form
-document.getElementById('cancel').onclick = function (){
-    document.getElementById('new-password-form').hidden = 'true'
-    document.getElementById('new-password').removeAttribute('hidden')
-    document.getElementsByClassName('new-password-req')[0].removeAttribute('required')
-    document.getElementsByClassName('new-password-req')[1].removeAttribute('required')
-    this.hidden = 'true'
-}
-
-// submit new password 
-document.getElementById('new-password-form').addEventListener('submit', function(event){
-    // console.log('Clicked submit in add new password')
-    event.preventDefault()
-    const form = event.target
-    window.passVaultAPI.addPassword(form.website.value,form.password.value)
-})
 
 // delete a password
 for(item of document.getElementsByClassName('bi-x')){

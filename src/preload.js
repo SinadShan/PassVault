@@ -48,6 +48,9 @@ contextBridge.exposeInMainWorld(
         },
         toggleInfo: () => {
             ipcRenderer.send('toggleInfo')
+        },
+        displayNewPasswordWindow: () => {
+            ipcRenderer.send('newPassword')
         }
     }
 )

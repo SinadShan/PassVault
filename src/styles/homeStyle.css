@@ -441,9 +441,33 @@ input[type=password]:disabled{
 }
 
 
-.bmc-button:hover{
-    transform: scale(1.025);
+.add-password-button:hover{
+    transform: scale(1.1);
     cursor: pointer;
 }
 
+.add-password-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4vw;
 
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    background-color: #00306f;
+
+    min-width: 50px;
+    min-height: 50px;
+
+    max-width: 85px;
+    max-height: 85px;
+
+    width: 7vw;
+    height: 7vw;
+    border-radius: 50%;
+    box-shadow: 2px 3px 3px#00000052 ;
+
+    z-index: 20;
+}

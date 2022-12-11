@@ -36,7 +36,7 @@
             <li class="nav-item">
                 <a href="index.html" class="nav-link">
                     <i class="bi bi-box-arrow-right"></i>
-                    <span class="link-text logout">Logout</span>
+                    <span class="link-text logout"><b>Logout</b></span>
                 </a>
             </li>
         </ul>
@@ -128,35 +128,6 @@
                 </div>
                 <% })%>
                 
-                <!-- add password -->
-                <div class="col-9 col-lg-6 col-xl-4 new-password-card">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-center align-items-center">
-                            <div class="row">
-                                <h5 class="card-title">Add a password</h5>
-                                <form hidden id="new-password-form">
-                                    <div class="form-group">
-                                        <input type="text" name="website" class="form-control new-password-req" placeholder="Website"/>
-                                    </div>    
-                                    <div class="form-group">
-                                        <input type="password" name="password" class="form-control new-password-req" placeholder="Password"/>
-                                        <i id='new-password-eye' class="bi bi-eye eye"></i>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <input type="button" id="cancel" class="form-control btn btn-primary" value="Cancel"/>
-                                        </div>
-                                        <div class="col-6">
-                                            <input type="submit" class="form-control btn btn-primary" value="Submit"/>
-                                        </div>
-                                    </div>
-                                </form>
-                                <!-- <p class="card-text">Password</p> -->
-                                <input type="button" id="new-password" class="form-control btn btn-primary" value="New password"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <span id="notification"></span>
             </div>
 
@@ -176,6 +147,10 @@
                         <strong class="notif-content">Hello there</strong>
                     </div>
                 </div>
+            </div>
+
+            <div class="add-password-button-wrapper">
+                <div class="add-password-button"><bi class="bi bi-plus"></bi></div>
             </div>
         </div>
     </view>

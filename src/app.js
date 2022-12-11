@@ -76,7 +76,17 @@ function createWindow(){
     win.once('ready-to-show',() =>{
         setTimeout(()=>{
             splash.destroy()
-            win.show()   
+            win.show()
+
+            // Auto login for DEVELOPMENT environment
+            
+            if(process.env.DEVELOPMENT=="1"){
+                console.log('In development environment\n')
+                currentUser=process.env.CURRENT_USER
+                globalPassword=process.env.GLOBAL_PASSWORD
+            
+                retrievePasswords().then()
+            }   
         },2500)
     })
 
@@ -89,6 +99,7 @@ function createWindow(){
 
 
 app.on('ready', createWindow)
+
 
 async function retrievePasswords(){
     // deciphering password
@@ -218,6 +229,7 @@ ipcMain.on('addPassword', function (event,website,password){
         console.log(err)
     }
 
+    BrowserWindow.getFocusedWindow().close()
 })
 
 ipcMain.on('deletePassword', (event,website) => {
@@ -338,10 +350,39 @@ ipcMain.on('updatePassword',(event,website,password) => {
     retrievePasswords().then()
 
     // close window
-    updatePass.destroy()
+    BrowserWindow.getFocusedWindow().destroy()
 
 })
 
 ipcMain.on('closeUpdateWindow',(event)=> {
     updatePass.destroy()
+})
+
+ipcMain.on('newPassword', () => {
+    let newPasswordWindow = new BrowserWindow({
+        width: 500,
+        height: 250,
+        resizable: false,
+        parent: win,
+        modal: true,
+        frame: true,
+        center: false,
+        backgroundColor: '#ffffff',
+        show: false,
+        webPreferences:{
+            contextIsolation: true,
+            nodeIntegration: false,
+            preload: path.join(__dirname,"preload.js")
+        },
+        autoHideMenuBar: true,
+        titleBarStyle:'hidden'
+    })
+
+    newPasswordWindow.loadFile(__dirname+'/windows/new-password.html')
+    newPasswordWindow.on('ready-to-show',() => {
+        newPasswordWindow.show()
+    })
+
+    newPasswordWindow.on('blur',() => newPasswordWindow.hide())
+
 })
