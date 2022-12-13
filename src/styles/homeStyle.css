@@ -86,15 +86,23 @@ input[type=password]:disabled{
 
 .list-icon-wrapper,
 .info-icon-wrapper{
+    color: #00306f;
     display: flex;
     align-items: center;
-    /* margin-right: auto; */
     padding: .20rem;
     background-color: white ;
-    /* height: 1.5rem; */
     width: 2.25rem; 
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
     border-radius: 5px;
+    border: 2.5px solid #00306fa2;
+
+}
+
+.list-icon-wrapper{
+    height: 40px;
+    position: fixed;
+    left: 170px;
+    z-index: 10;
 }
 
 .list-icon-wrapper:hover,
