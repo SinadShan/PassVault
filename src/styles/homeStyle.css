@@ -151,28 +151,56 @@ input[type=password]:disabled{
     margin-top: 20px;
 }
 
-.bi-arrow-counterclockwise{
-    color: #00306f;
+.card-header-buttons{
     position: relative;
-    left: 1rem;
-    top: -.25rem;
-    font-size: 1.25rem;
+    top: 8px;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
 }
 
-.bi-x:hover,
-.bi-arrow-counterclockwise:hover{
-    /* color: #00306f; */
+.arrow-icon-container,
+.delete-icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #00306f;
+}
+
+.bi-x{
+    font-size: 1.8rem;
+}
+
+.bi-arrow-counterclockwise{
+    font-size: 1.3rem;
+}
+
+
+.arrow-icon-container:hover,
+.delete-icon-container:hover{
     cursor: pointer;
-    
+    background-color: #f2f4f8;
+    border:solid 1.5px #00306f;
 }
 
-.bi-x:not(.close-info-icon){
+/* .bi-x:hover,
+.bi-arrow-counterclockwise:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+} */
+
+/* .bi-x:not(.close-info-icon){
     position: relative;
     left: 1rem;
     top: -.15rem;
     color: #00306f;
     font-size: 1.65rem;
-}
+} */
 
 .btn-primary{
     background-color: #00306f;
