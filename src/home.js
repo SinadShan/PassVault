@@ -67,14 +67,7 @@ document.querySelectorAll('.nav-link')[1].onclick = () => {
 for (item of document.getElementsByClassName('clipboard')){
     item.onclick = function(event){
         // console.log(event.target.parentElement.children[0].value)
-        let notification = document.getElementsByClassName("notification")[0]
-        notification.style.display='flex'
-        setTimeout(() => notification.style.display = 'none', 2250)
-        notification.style.opacity = '1';
-        notification.style.display='flex'
-        setTimeout(() => notification.style.display = 'none', 2250)
-        document.getElementsByClassName("notif-content")[0].innerText = "Copied password to clipboard"
-        setTimeout(() => notification.style.opacity = '0',2000)
+        displayNotification("Copied password to clipboard")
         window.passVaultAPI.copyToClipboard(
             event.target.parentElement.children[0].value
         )
@@ -85,12 +78,7 @@ for (item of document.getElementsByClassName('list-clipboard')){
     item.onclick = function(event){
         let website = event.target.id.slice(5,-10)
         let password = document.getElementById(`list-${website}-form`).value
-        let notification = document.getElementsByClassName("notification")[0]
-        notification.style.opacity = '1';
-        notification.style.display='flex'
-        setTimeout(() => notification.style.display = 'none', 2250)
-        document.getElementsByClassName("notif-content")[0].innerText = "Copied password to clipboard"
-        setTimeout(() => notification.style.opacity = '0',2000)
+        displayNotification("Copied password to clipboard")
         window.passVaultAPI.copyToClipboard(password)
     }
 }
@@ -157,6 +145,15 @@ function search(e){
         //     console.log('No matching password')
     }
     
+}
+
+function displayNotification(message){
+    let notification = document.getElementsByClassName("notification")[0]
+    notification.style.display='flex'
+    setTimeout(() => notification.style.display = 'none', 2250)
+    notification.style.opacity = '1';
+    setTimeout(() => notification.style.opacity = '0',2000)
+    document.getElementsByClassName("notif-content")[0].innerText = message
 }
 
 for (item of document.getElementsByClassName('strength-meter')){
