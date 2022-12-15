@@ -141,8 +141,8 @@ function search(e){
         else{
             cards[i].parentElement.style.display = ""
         }
-        // if(count == cards.length)
-        //     console.log('No matching password')
+        if(count == cards.length)
+            displayNotification("No matching entry.")
     }
     
 }
