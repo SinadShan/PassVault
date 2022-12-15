@@ -37,7 +37,7 @@ function toggleListPassword(){
 
 // passwordView
 document.querySelectorAll('.nav-link')[0].onclick = () => {
-
+    document.getElementsByTagName("title")[0].innerText='Passwords'
     var passwordsView = document.getElementById("passwords-view");
     for( item of document.getElementsByTagName('view'))
         item.style.display = 'none';
@@ -48,6 +48,7 @@ document.querySelectorAll('.nav-link')[0].onclick = () => {
 document.querySelectorAll('.nav-link')[1].onclick = () => {
 
     var accountsView = document.getElementById("accounts-view");
+    document.getElementsByTagName("title")[0].innerText='Account'
     for( item of document.getElementsByTagName('view'))
         item.style.display = 'none';
     accountsView.style.display = 'block';

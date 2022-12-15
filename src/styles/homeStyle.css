@@ -42,12 +42,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card{
+    justify-content: center;
     border: 2.5px solid #00306fa2;
     border-radius: 15px;
     margin-bottom: 20px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.137) ;
     text-align: center;
-    height:250px;
+    min-height:200px;
 }
 
 .card:hover{
@@ -242,13 +243,14 @@ input[type=password]:disabled{
 }
 
 .strength-meter{
+    padding: 0;
     font-size:0.5rem; 
 }
 
 .card .popup{
     color: white;
     position: absolute;
-    top: -7px;
+    /* top: 20px; */
     left: -10px; 
     width:100px;
     opacity: 0;
@@ -261,9 +263,9 @@ input[type=password]:disabled{
     text-align: center;
     border-radius: 25px;
     box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-    transition: 
+    /* transition: 
         top 200ms ease-out,
-        opacity 200ms ease-out;
+        opacity 200ms ease-out; */
 }
 
 .card .popup::before{

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Passwords</title>
     <link href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
@@ -60,7 +60,11 @@
             </div> 
 
             <div class="row justify-content-center">
-                <% details.forEach ( function (item,index){
+                <% if (details.length == 0) {%>
+                <div class="text-center pt-5 empty-passwords-message">
+                    <h6 class="text-muted">No passwords to show. Add a password by clicking on the plus icon.</h6>
+                </div>
+                <%} else{ details.forEach ( function (item,index){
                 %>
                 <!-- webiste Passwords -->
                 <div class="col-9 col-lg-6 col-xl-4">
@@ -126,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                <% })%>
+                <% }) }%>
                 
                 <span id="notification"></span>
             </div>
@@ -158,17 +162,17 @@
     <view id='accounts-view' style='display: none;'>
         <div class="container-fluid">
 
-            <div class="d-flex flex-column align-items-center account-container">
-                <div class="pt-4">
+            <div class="d-flex flex-column align-items-center justify-content-center account-container">
+                <!-- <div class="pt-4">
                     <h1>Account</h1>
-                </div>
+                </div> -->
 
-                <div>
+                <!-- <div>
                     <i class="bi bi-person-circle" style="font-size: 10rem;"></i>
-                </div>
+                </div> -->
 
-                <div>
-                    <h2><%= username %></h2>
+                <div class="text-center">
+                    <h1><b><%= username %></b></h1>
                 </div>
 
                 <div class="account-form-container">
@@ -201,6 +205,8 @@
                     </div>
 
                 </div>
+
+                <div class="text-muted text-center pt-5" style="max-width: 65%;"><p>Your passwords are encrypted and stored locally. Your master password is the only way to retrieve them. Make sure to keep the master password safe and don't forget it!</p></div>
                 
             </div>
 

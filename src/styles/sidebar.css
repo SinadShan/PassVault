@@ -4,12 +4,12 @@
     height: 100vh;
     position: fixed;
     background-color: #00306f;
-    transition: width 100ms ease;
     box-shadow: 10px 0 10px rgba(42, 42, 42, 0.178);
 }
 
 .sidebar:hover{
     width: 17rem;
+    transition: width 100ms ease;
 }
 
 .sidebar-list{
@@ -62,11 +62,15 @@
     transition: opacity 100ms;
 }
 
-.nav-link:hover {
+.nav-link:hover{
     background: #002350;
     color: white;
 }
-  
+
+.nav-link:focus {
+    color: white;
+}
+
 .link-text {
     opacity: 0;
     font-size: 1.25rem;
