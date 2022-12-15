@@ -142,15 +142,18 @@ searchForm.addEventListener('keyup',search)
 function search(e){
     
     const cards = document.querySelectorAll('.card')
-
-    for(i = 0; i < cards.length-1; i++){
+    let count = 0
+    for(i = 0; i < cards.length; i++){
         const index = cards[i].classList[1]
         if(document.getElementsByClassName(`card-title ${index}`)[0].textContent.search(new RegExp(e.target.value,'i'))<0){
             cards[i].parentElement.style.display = "none"
+            count++
         }
         else{
             cards[i].parentElement.style.display = ""
         }
+        // if(count == cards.length)
+        //     console.log('No matching password')
     }
     
 }
