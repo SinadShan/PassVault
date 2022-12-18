@@ -141,8 +141,10 @@ function search(e){
         else{
             cards[i].parentElement.style.display = ""
         }
-        if(count == cards.length)
+        if(count == cards.length){
+            // document.getElementsByName('failed-search-password')[0].display='block'
             displayNotification("No matching entry.")
+        }
     }
     
 }

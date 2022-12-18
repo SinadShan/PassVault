@@ -61,7 +61,7 @@ function createWindow(){
     
     win = new BrowserWindow({
         minHeight:700,
-        minWidth: 900,
+        minWidth: 1000,
         backgroundColor: '#404eed',
         webPreferences:{
             contextIsolation: true,
