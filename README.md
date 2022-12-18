@@ -3,6 +3,10 @@
 [![Total downloads](https://img.shields.io/github/downloads/sinadshan/passvault/total?style=plastic)]()
 [![passvault](https://snapcraft.io/passvault/badge.svg)](https://snapcraft.io/passvault)&nbsp;
 
+### Update
+I've decided to put this project to sleep. What started as a hobby beginner project has reached a stage where I feel comfortable to wrap up. There are certainly many things to improve on this application, but for now PassVault shall be what it is, a simple straightforward password manager.
+
+## Info
 Electron based cross-platform desktop application for managing passwords
 
 Store and manage your passwords on your local machine. This desktop application solves the problem of forgotten passwords and helps with your heedless behaviour of same-password-for-all-sites.  
