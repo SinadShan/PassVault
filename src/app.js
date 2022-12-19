@@ -14,10 +14,10 @@ const passwordStrength = require('./pwdstrength.js');
 const { exec } = require('child_process');
 const { electron } = require('process');
 
-require('electron-reload')(__dirname+'/../', {
-    // Note that the path to electron may vary according to the main file
-    electron: require(`${__dirname}/../node_modules/electron`)
-});
+// require('electron-reload')(__dirname+'/../', {
+//     // Note that the path to electron may vary according to the main file
+//     electron: require(`${__dirname}/../node_modules/electron`)
+// });
 
 if(process.platform == 'win32'){
     var db = new Database('pwmanager.db')
@@ -80,13 +80,13 @@ function createWindow(){
 
             // Auto login for DEVELOPMENT environment
             
-            if(process.env.DEVELOPMENT=="1"){
-                console.log('In development environment\n')
-                currentUser=process.env.CURRENT_USER
-                globalPassword=process.env.GLOBAL_PASSWORD
+            // if(process.env.DEVELOPMENT=="1"){
+            //     console.log('In development environment\n')
+            //     currentUser=process.env.CURRENT_USER
+            //     globalPassword=process.env.GLOBAL_PASSWORD
             
-                retrievePasswords().then()
-            }   
+            //     retrievePasswords().then()
+            // }   
         },2500)
     })
 
@@ -291,7 +291,7 @@ ipcMain.on('openUpdatePasswordWindow',(event,website) => {
             preload: path.join(__dirname,"preload.js")
         },
         autoHideMenuBar: true,  
-        titleBarStyle:'hidden'
+        titleBarStyle: 'default' 
     })
     ejse.data('website',website)
     updatePass.loadFile(__dirname+'/windows/updatePassword.ejs')
@@ -322,7 +322,7 @@ ipcMain.on('toggleInfo',(event) => {
             preload: path.join(__dirname,"preload.js")
         },
         autoHideMenuBar: true,
-        titleBarStyle:'hidden'
+        titleBarStyle:'default'
     })
 
     infoWindow.loadFile(__dirname+'/windows/info.html')
