@@ -1,7 +1,8 @@
 # PassVault
 ![Electron](https://img.shields.io/badge/-Electron-05122A?style=flat&logo=electron)  
 [![Total downloads](https://img.shields.io/github/downloads/sinadshan/passvault/total?style=plastic)]()
-[![passvault](https://snapcraft.io/passvault/badge.svg)](https://snapcraft.io/passvault)&nbsp;
+[![passvault](https://snapcraft.io/passvault/badge.svg)](https://snapcraft.io/passvault)&nbsp;<br/>
+[![Ceasefire Now](https://badge.techforpalestine.org/default)](https://techforpalestine.org/learn-more)
 
 ### Update
 I've decided to put this project to sleep. What started as a hobby beginner project has reached a stage where I feel comfortable to wrap up. There are certainly many things to improve on this application, but for now PassVault shall be what it is, a simple straightforward password manager.
